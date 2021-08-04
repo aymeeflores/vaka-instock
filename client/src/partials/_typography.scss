@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap");
+
+//mobile sizes
+
+$titillium-reg: "Titillium web";
+$semibold: 600;
+
+@mixin mobile-header {
+  font-family: $titillium-reg;
+  font-weight: $semibold;
+  font-size: 28px;
+  line-height: 36px;
+}
+
+@mixin mobile-subheader {
+  font-family: $titillium-reg;
+  font-weight: $semibold;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+@mixin mobile-labels {
+  font-family: $titillium-reg;
+  font-weight: $semibold;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+@mixin mobile-tableheader {
+  font-family: $titillium-reg;
+  font-weight: $semibold;
+  font-size: 11px;
+  line-height: 16px;
+}
+
+@mixin body-large {
+  font-family: $titillium-reg;
+  font-size: 15px;
+  line-height: 26px;
+}
+
+@mixin body-medium {
+  font-family: $titillium-reg;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+@mixin body-small {
+  font-family: $titillium-reg;
+  font-size: 11px;
+  line-height: 16px;
+}
+
+//desktop & tablet
+
+@mixin desk-header {
+  font-family: $titillium-reg;
+  font-size: $semibold;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+@mixin desk-subheader {
+  font-family: $titillium-reg;
+  font-weight: $semibold;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+@mixin desk-labels {
+  font-family: $titillium-reg;
+  font-weight: $semibold;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+@mixin desk-tableheader {
+  font-family: $titillium-reg;
+  font-weight: $semibold;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+@mixin desk-bodylarge {
+  font-size: $titillium-reg;
+  font-size: 16px;
+  line-height: 28px;
+}
+
+@mixin desk-bodymedium {
+  font-family: $titillium-reg;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+@mixin desk-bodysmall {
+  font-family: $titillium-reg;
+  font-size: 12px;
+  line-height: 18px;
+}

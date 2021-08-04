@@ -1,0 +1,8 @@
+@mixin css-reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    font-family: "Titillium web";
+  }
+}
