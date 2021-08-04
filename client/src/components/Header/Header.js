@@ -1,12 +1,15 @@
-import React from 'react'
+import "../Header/header.scss";
 
 const Header = () => {
-    return (
-        <div>
+  return (
+    <section className="header">
+      <nav className="header__nav">
+        <article className="header__logo-container">
+          <img src="" />
+        </article>
+      </nav>
+    </section>
+  );
+};
 
-        </div>
-    )
-}
-
-export default Header
-
+export default Header;
