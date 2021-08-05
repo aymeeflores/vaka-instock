@@ -1,0 +1,16 @@
+@use '../../partials/variables' as *;
+@use '../../partials/typography' as *;
+@use '../../partials/breakpoints' as *;
+
+
+.footer{
+    display: flex;
+    justify-content: center;
+    @include body-small;
+    @include tablet{
+        @include desk-bodysmall;
+    }
+    @include desktop{
+        @include desk-tableheader;
+    }
+}
