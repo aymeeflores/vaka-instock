@@ -1,4 +1,6 @@
 import React from 'react'
+import {API_URL} from '../../util'
+import axios from "axios"
 
 class Warehouses extends React.Component {
     state = {
@@ -16,4 +18,4 @@ class Warehouses extends React.Component {
     )
 }
 
-export default Warehouses
+export default Warehouses;
