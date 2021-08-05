@@ -8,8 +8,8 @@ currentdir = __dirname
 const warehouses = JSON.parse(fs.readFileSync(path.resolve(currentdir, "../data/warehouses.json")))
 
 router.get("/", (req, res) => {
-    res.send(warehouse)
-    console.log(warehouse)
+    res.send(warehouses)
+    console.log(warehouses)
 })
 
 router.put("/:id", (req, res) => {
