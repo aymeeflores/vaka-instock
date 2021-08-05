@@ -1,11 +1,13 @@
-import React from 'react'
+import React from "react";
+import InventoryList from "../../components/InventoryList/InventoryList";
+import "../Inventory/inventory.scss";
 
 const Inventory = () => {
-    return (
-        <div>
+  return (
+    <section className="inventory">
+      <InventoryList />
+    </section>
+  );
+};
 
-        </div>
-    )
-}
-
-export default Inventory
+export default Inventory;

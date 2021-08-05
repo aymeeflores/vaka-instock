@@ -1,0 +1,17 @@
+@import "../../partials/breakpoints";
+@import "../../partials/reset";
+@import "../../partials/typography";
+@import "../../partials/variables";
+
+.inventory {
+  &__list-container {
+    background-color: #fff;
+    width: calc(100% - 32px);
+    height: 500px;
+    margin: auto;
+    border-radius: 3px;
+    position: relative;
+    top: -64px;
+    padding: 32px 24px;
+  }
+}

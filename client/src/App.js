@@ -12,7 +12,7 @@ class App extends React.Component {
       <>
         <BrowserRouter>
           <Header />
-
+          <Inventory />
           <Switch>
             <Route path="/">
               <Warehouses />
