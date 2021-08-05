@@ -2,7 +2,7 @@ import React from 'react'
 import {API_URL} from '../../util'
 import axios from "axios"
 import WarehouseList from '../../components/WarehouseList/WarehouseList';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 class Warehouses extends React.Component {
     state = {
@@ -26,7 +26,7 @@ class Warehouses extends React.Component {
             <div>
                 <BrowserRouter>
                     <Switch>
-                        <Route path='/warehouses' exact>
+                        <Route path='/' exact>
                             {this.state.warehouseList && (
                                 <WarehouseList warehouseList={this.state.warehouseList}/> 
                             )} 
@@ -36,7 +36,7 @@ class Warehouses extends React.Component {
 
 
 
-                        
+
                     </Switch>
                 </BrowserRouter>
             </div>
