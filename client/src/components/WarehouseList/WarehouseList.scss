@@ -31,6 +31,9 @@ p{
         padding: 0 32px;
         margin: 0 32px;
     }
+    @include desktop{
+        padding: 0 40px;
+    }
     &__top{
         @include tablet{
             display: flex;
@@ -91,19 +94,51 @@ p{
         padding: 0px 24px;
         padding-top: 16px;
         padding-bottom: 27px;
-
+        @include tablet{
+            margin: 0 -32px;
+            padding: 0 32px;
+            flex-wrap: nowrap;
+        }
     }
     &__left{
         width: 50%;
+        @include tablet{
+            display: flex;
+            justify-content: space-between;
+            padding-right: 8%;
+            // width: 37%;
+        }
     }
     &__right{
         width: 50%;
+        @include tablet{
+            display: flex;
+            justify-content: space-between;
+            padding-left: 4%;
+
+            // width: 35%;
+        }
     }
     &__icons{
         display: flex;
         justify-content: space-between;
         width: 100%;
         margin-top: 19px;
+        @include tablet{
+            width: 20%;
+            justify-content: flex-end;
+            margin-left: 8%;
+            margin-top: 40px;
+        }
+    }
+    &__chev{
+        height: 20px;
+    }
+    &__desc{
+        width: 95px;
+        @include tablet{
+            margin-top: 27px;
+        }
     }
     &__subheading{
         margin-bottom: 4px;
@@ -118,12 +153,31 @@ p{
                 height: 40px;
                 background-color: rgba(247, 248, 249, 0.7);
                 margin: 0 -32px;
+                padding: 0 32px;
                 display: flex;
                 justify-content: space-between;
             }
-            
-
         }
+        &-2{
+            display: none;
+            @include tablet{
+                font-size: 12px; 
+                margin-top: 11px;  
+                display: flex;
+            }          
+        }
+        &--flex{
+            display: flex;
+        }
+    }
+    &__sort{
+        display: none;
+        @include tablet{
+            height: 12px;
+            margin-top: 13px; 
+            display: flex;
+        }
+        
     }
     &__name{
         text-decoration: none;
@@ -135,6 +189,25 @@ p{
         }
         &-box{
             display: flex;
+            @include tablet{
+                margin-top: 38px;
+                margin-bottom: 38px;
+            }
+        }            
+    }
+    &__contact-info{
+        width: 120px;
+        @include tablet{
+            padding-left: 3%;
+            margin-top: 27px;
+        }
+    }
+    &__contact-name{
+        margin-top: 38px;
+    }
+    &__pen{
+        @include tablet{
+            margin-left: 24px;
         }
     }
 }

@@ -20,14 +20,23 @@ const WarehouseList = ({warehouseList}) => {
                 </div>
             </div>
             <div className='w-list__subheading-bar'>
-                <h4>Warehouse</h4>
-                <img src={sort}/>
-                <h4>Address</h4>
-                <img src={sort}/>
-                <h4>Contact Name</h4>
-                <img src={sort}/>
-                <h4>Contact Information</h4>
-                <img src={sort}/>
+                <div className='w-list__subheading--flex'>
+                    <h4 className='w-list__subheading-2'>WAREHOUSE</h4>
+                    <img className='w-list__sort' src={sort}/>
+                </div>
+                <div className='w-list__subheading--flex'>
+                    <h4 className='w-list__subheading-2'>ADDRESS</h4>
+                    <img className='w-list__sort' src={sort}/>
+                </div>
+                <div className='w-list__subheading--flex'>
+                    <h4 className='w-list__subheading-2'>CONTACT NAME</h4>
+                    <img className='w-list__sort' src={sort}/>
+                </div>
+                <div className='w-list__subheading--flex'>
+                    <h4 className='w-list__subheading-2'>CONTACT INFORMATION</h4>
+                    <img className='w-list__sort' src={sort}/>
+                </div>
+                <h4 className='w-list__subheading-2'>ACTIONS</h4>
             </div>
             <div>
                 {warehouseList
@@ -35,25 +44,27 @@ const WarehouseList = ({warehouseList}) => {
                     return(
                         <div className='w-list__container'>
                             <div className='w-list__left'>
-                                <h4 className='w-list__subheading'>Warehouse</h4>
+                                <h4 className='w-list__subheading'>WAREHOUSE</h4>
                                 {/* This needs to be linked to whatever the individual warehouse details path will be */}
                                 <div className='w-list__name-box'>
                                     <Link className='w-list__name'><p>{data.name}</p></Link>
-                                    <img src={chevron}/>
+                                    <img className='w-list__chev' src={chevron}/>
                                 </div>
-                                <h4 className='w-list__subheading w-list__subheading--lower'>Address</h4>
-                                <p>{data.address}, {data.city}, {data.country}</p>
+                                <h4 className='w-list__subheading w-list__subheading--lower'>ADDRESS</h4>
+                                <p className='w-list__desc'>{data.address}, {data.city}, {data.country}</p>
                             </div>
                             <div className='w-list__right'>
-                                <h4 className='w-list__subheading'>Contact Name</h4>
-                                <p>{data.contact.name}</p>
-                                <h4 className='w-list__subheading w-list__subheading--lower'>Contact Information</h4>
-                                <p>{data.contact.phone}</p>
-                                <p>{data.contact.email}</p>
+                                <h4 className='w-list__subheading'>CONTACT NAME</h4>
+                                <p className='w-list__contact-name'>{data.contact.name}</p>
+                                <h4 className='w-list__subheading w-list__subheading--lower'>CONTACT INFORMATION</h4>
+                                <div className='w-list__contact-info'>
+                                    <p>{data.contact.phone}</p>
+                                    <p>{data.contact.email}</p>
+                                </div>
                             </div>
                             <div className='w-list__icons'>
                             <Link><img src={trash}/></Link>
-                            <Link><img src={pen}/></Link>
+                            <Link><img className='w-list__pen' src={pen}/></Link>
                             </div>
                         </div>    
                         
