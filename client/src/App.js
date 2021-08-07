@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Warehouses from "./pages/Warehouses/Warehouses";
 import Footer from "./components/Footer/Footer";
 import Inventory from "./pages/Inventory/Inventory";
+import WarehouseDetails from "../src/components/WarehouseDetails/WarehouseDetails";
 
 class App extends React.Component {
   render() {
@@ -12,7 +13,7 @@ class App extends React.Component {
       <>
         <BrowserRouter>
           <Header />
-
+          <WarehouseDetails />
           <Switch>
             <Route path="/">
               <Warehouses />

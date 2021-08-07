@@ -1,1 +1,115 @@
 @import "../../partials/main";
+.warehouseDetails {
+  position: absolute;
+  left: 4.27%;
+  right: 4.27%;
+  top: 7.01%;
+  bottom: 4.95%;
+  box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+
+  &__header {
+    border-bottom: solid 1px $cloud;
+    display: flex;
+    padding-bottom: 32px;
+    padding-top: 32px;
+  }
+  &__backarrow {
+    margin: 0 12px 0 18px;
+  }
+  &__maintitle {
+    @include mobile-header;
+    margin: 0 100px 0px 0;
+  }
+  &__editframe {
+    flex-shrink: 0;
+    align-self: center;
+    background-color: $instock-indigo;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 24px;
+  }
+  &__address {
+    @include body-medium;
+    width: 100%;
+    margin: 16px auto 16px 0;
+  }
+  &__subtitle {
+    @include mobile-tableheader;
+    color: $slate;
+    text-transform: uppercase;
+  }
+  &__details {
+    @include body-medium;
+  }
+  &__contact {
+    margin-right: 44px;
+  }
+}
+.inventory {
+  border-top: solid 1px $cloud;
+  margin-top: 17px;
+  padding: 0px 0 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  &__leftcontain {
+    width: 50%;
+    margin-right: 44px;
+  }
+  &__subtitle {
+    @include mobile-tableheader;
+    color: $slate;
+    text-transform: uppercase;
+    margin: 20px 44px 4px 0;
+  }
+  &__details {
+    @include body-medium;
+    display: flex;
+    align-content: center;
+
+    &--chevron {
+      height: 20px;
+      width: 10;
+    }
+    &--item {
+      @include body-medium;
+      color: $instock-indigo;
+    }
+  }
+  // &__rightcontain {
+  // }
+  &__status {
+    @include body-small;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 20px;
+    background-color: #15846312;
+    color: #158463;
+    padding: 4px 8px;
+    width: 61px;
+  }
+  &__buttons {
+    flex-basis: 100%;
+    margin-top: 19px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__erase {
+    border: none;
+    background-color: transparent;
+  }
+  &__edit {
+    border: none;
+    background-color: transparent;
+    margin-right: 27px;
+  }
+}
