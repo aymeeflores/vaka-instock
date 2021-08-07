@@ -1,0 +1,140 @@
+@use '../../partials/main' as *;
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    color: $instock-black;
+}
+
+h1{
+    @include mobile-header;
+}
+
+h4{
+    @include mobile-tableheader;
+    color: $slate;
+}
+
+p{
+    @include body-medium;
+}
+
+.w-list{
+    padding: 0 24px;
+    margin: 0 16px;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+    border-radius: 3px;
+    @include tablet{
+        padding: 0 32px;
+        margin: 0 32px;
+    }
+    &__top{
+        @include tablet{
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+    &__heading{
+        padding-top: 32px;
+    }
+    &__search{
+        border-radius: 20px;
+        outline: none;
+        height: 36px;
+        width: 100%;
+        padding-left: 16px;
+        padding-right: 50px;
+        margin-top: 16px;
+        margin-bottom: 16px;
+        border: 1px solid $cloud;
+        @include tablet{
+            width: 185px;
+            height: 38px;
+            margin-right: 16px;
+            margin-top: 32px;
+        }
+        &-div{
+            position: relative;
+        }
+        &-img{
+            position:absolute;
+            top: 22px;
+            right: 16px;
+            @include tablet{
+                top: 40px;
+                right: 200px;
+            }
+        }
+    }
+    &__add{
+        background-color: $instock-indigo;
+        border-radius: 20px;
+        width: 100%;
+        height: 36px;
+        color: #FFFFFF;
+        border: none;
+        margin-bottom: 24px;
+        @include tablet{
+            height: 38px;
+            width: 168px;
+            margin-top: 32px;
+        }
+    }
+    &__container{
+        border-top: 1px solid $cloud;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -24px;
+        padding: 0px 24px;
+        padding-top: 16px;
+        padding-bottom: 27px;
+
+    }
+    &__left{
+        width: 50%;
+    }
+    &__right{
+        width: 50%;
+    }
+    &__icons{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 19px;
+    }
+    &__subheading{
+        margin-bottom: 4px;
+        @include tablet{
+            display: none;
+        }
+        &--lower{
+            margin-top: 16px;
+        }
+        &-bar{
+            @include tablet{
+                height: 40px;
+                background-color: rgba(247, 248, 249, 0.7);
+                margin: 0 -32px;
+                display: flex;
+                justify-content: space-between;
+            }
+            
+
+        }
+    }
+    &__name{
+        text-decoration: none;
+        color: $instock-indigo;
+        font-weight: 600;
+        margin-right: 6px;
+        &:hover{
+            text-decoration: underline;
+        }
+        &-box{
+            display: flex;
+        }
+    }
+}
