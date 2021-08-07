@@ -29,7 +29,7 @@ const WarehouseList = ({warehouseList}) => {
                     <img className='w-list__sort' src={sort}/>
                 </div>
                 <div className='w-list__subheading--flex'>
-                    <h4 className='w-list__subheading-2'>CONTACT NAME</h4>
+                    <h4 className='w-list__subheading-2 w-list__subheading-2--spacing'>CONTACT NAME</h4>
                     <img className='w-list__sort' src={sort}/>
                 </div>
                 <div className='w-list__subheading--flex'>

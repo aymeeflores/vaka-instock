@@ -27,15 +27,24 @@ p{
     margin: 0 16px;
     box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
     border-radius: 3px;
+    position: relative;
+    top: -64px;
+    background-color: #FFFFFF;
     @include tablet{
         padding: 0 32px;
         margin: 0 32px;
     }
     @include desktop{
         padding: 0 40px;
+        width: 1020px;
+        margin: auto;
     }
     &__top{
         @include tablet{
+            display: flex;
+            justify-content: space-between;
+        }
+        @include desktop{
             display: flex;
             justify-content: space-between;
         }
@@ -59,6 +68,12 @@ p{
             margin-right: 16px;
             margin-top: 32px;
         }
+        @include desktop{
+            width: 274px;
+            height: 38px;
+            margin-right: 16px;
+            margin-top: 32px;
+        }
         &-div{
             position: relative;
         }
@@ -70,6 +85,11 @@ p{
                 top: 40px;
                 right: 200px;
             }
+            @include desktop{
+                top: 40px;
+                right: 200px;
+            }
+
         }
     }
     &__add{
@@ -81,6 +101,11 @@ p{
         border: none;
         margin-bottom: 24px;
         @include tablet{
+            height: 38px;
+            width: 168px;
+            margin-top: 32px;
+        }
+        @include desktop{
             height: 38px;
             width: 168px;
             margin-top: 32px;
@@ -99,6 +124,12 @@ p{
             padding: 0 32px;
             flex-wrap: nowrap;
         }
+        @include desktop{
+            margin: 0 -40px;
+            padding: 0 32px;
+            flex-wrap: nowrap;
+        }
+
     }
     &__left{
         width: 50%;
@@ -106,7 +137,10 @@ p{
             display: flex;
             justify-content: space-between;
             padding-right: 8%;
-            // width: 37%;
+        }
+        @include desktop{
+            display: flex;
+            justify-content: space-between;
         }
     }
     &__right{
@@ -115,8 +149,12 @@ p{
             display: flex;
             justify-content: space-between;
             padding-left: 4%;
-
-            // width: 35%;
+        }
+        @include desktop{
+            display: flex;
+            justify-content: space-between;
+            margin-left: 75px;
+            margin-right: -20px;
         }
     }
     &__icons{
@@ -130,19 +168,34 @@ p{
             margin-left: 8%;
             margin-top: 40px;
         }
+        @include desktop{
+            width: 20%;
+            justify-content: flex-end;
+            margin-left: 8%;
+            margin-top: 40px;
+        }
+
     }
     &__chev{
         height: 20px;
     }
     &__desc{
-        width: 95px;
+        width: 110px;
         @include tablet{
             margin-top: 27px;
+        }
+        @include desktop{
+            margin-top: 27px;
+            width: 220px;
+            margin-left: -40px;
         }
     }
     &__subheading{
         margin-bottom: 4px;
         @include tablet{
+            display: none;
+        }
+        @include desktop{
             display: none;
         }
         &--lower{
@@ -157,6 +210,14 @@ p{
                 display: flex;
                 justify-content: space-between;
             }
+            @include desktop{
+                height: 40px;
+                background-color: rgba(247, 248, 249, 0.7);
+                margin: 0 -40px;
+                padding: 0 32px;
+                display: flex;
+                justify-content: space-between;
+            }
         }
         &-2{
             display: none;
@@ -164,7 +225,17 @@ p{
                 font-size: 12px; 
                 margin-top: 11px;  
                 display: flex;
-            }          
+            }  
+            @include desktop{
+                font-size: 12px; 
+                margin-top: 11px;  
+                display: flex;
+            }
+            &--spacing{
+                @include desktop{
+                    margin-left: 130px;
+                }
+            }      
         }
         &--flex{
             display: flex;
@@ -177,7 +248,11 @@ p{
             margin-top: 13px; 
             display: flex;
         }
-        
+        @include desktop{
+            height: 12px;
+            margin-top: 13px; 
+            display: flex;
+        }        
     }
     &__name{
         text-decoration: none;
@@ -193,6 +268,11 @@ p{
                 margin-top: 38px;
                 margin-bottom: 38px;
             }
+            @include desktop{
+                margin-top: 38px;
+                margin-bottom: 38px;
+                width: 220px;
+            }
         }            
     }
     &__contact-info{
@@ -201,12 +281,25 @@ p{
             padding-left: 3%;
             margin-top: 27px;
         }
+        @include desktop{
+            padding-left: 3%;
+            margin-top: 27px;
+        }
     }
     &__contact-name{
-        margin-top: 38px;
+        @include tablet{
+            margin-top: 38px;
+        }
+        @include desktop{
+            margin-top: 38px;
+        }
+        
     }
     &__pen{
         @include tablet{
+            margin-left: 24px;
+        }
+        @include desktop{
             margin-left: 24px;
         }
     }
