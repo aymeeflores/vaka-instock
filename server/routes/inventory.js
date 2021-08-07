@@ -12,12 +12,10 @@ const getInventoryData = () => {
 
 // get list of all inventory items
 
-/* AYMEE UNCOMMENT UR WELCOMEEEE
 router.get("/", (req, res) => {
   const inventories = getInventoryData();
   res.json(inventories);
 });
-*/
 
 // get single inventory item
 router.get("/:id", (req, res) => {

@@ -17,7 +17,7 @@ class App extends React.Component {
             <Route path="/">
               <Warehouses />
             </Route>
-            <Route path="/inventory">
+            <Route exact path="/inventory">
               <Inventory />
             </Route>
           </Switch>
