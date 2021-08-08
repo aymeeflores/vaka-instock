@@ -44,7 +44,7 @@ class Inventory extends Component {
                 }}
               ></Route>
               <Route
-                path="/details/:id"
+                path="/inventory/details/:id"
                 render={(routerParams) => {
                   return (
                     <InventoryItemDetails
@@ -55,7 +55,7 @@ class Inventory extends Component {
                 }}
               ></Route>
               <Route
-                path="/add/:id"
+                path="/inventory/add"
                 render={(routerParams) => {
                   return (
                     <AddNewInventoryItem
@@ -66,7 +66,7 @@ class Inventory extends Component {
                 }}
               ></Route>
               <Route
-                path="/delete/:id"
+                path="/inventory/delete/:id"
                 render={(routerParams) => {
                   return (
                     <DeleteInventory
