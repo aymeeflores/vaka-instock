@@ -5,6 +5,7 @@ import whitepen from "../../assets/Icons/edit-white.svg";
 import eraseicon from "../../assets/Icons/delete_outline-24px.svg";
 import editicon from "../../assets/Icons/edit-24px.svg";
 import chevron from "../../assets/Icons/chevron_right-24px.svg";
+import sorticon from "../../assets/Icons/sort-24px.svg";
 
 class WarehouseDetails extends React.Component {
   render() {
@@ -19,7 +20,12 @@ class WarehouseDetails extends React.Component {
             />
             <h1 className="warehouseDetails__maintitle">King West</h1>
             <div className="warehouseDetails__editframe">
-              <img src={whitepen} alt="edit icon" />
+              <img
+                className="warehouseDetails__editframe--icon"
+                src={whitepen}
+                alt="edit icon"
+              />
+              <p className="warehouseDetails__editframe--label">Edit</p>
             </div>
           </div>
 
@@ -49,6 +55,43 @@ class WarehouseDetails extends React.Component {
           </div>
         </section>
         <section className="inventory">
+          <div className="inventory__hiddenlabels">
+            <h4 className="inventory__hiddenlabels--subtitle">
+              Inventory Item
+              <img
+                className="inventory__sorticon"
+                src={sorticon}
+                alt="sort icon"
+              />
+            </h4>
+            <h4 className="inventory__hiddenlabels--subtitle">
+              category
+              <img
+                className="inventory__sorticon"
+                src={sorticon}
+                alt="sort icon"
+              />
+            </h4>
+            <h4 className="inventory__hiddenlabels--subtitle">
+              {" "}
+              Status
+              <img
+                className="inventory__sorticon"
+                src={sorticon}
+                alt="sort icon"
+              />
+            </h4>
+            <h4 className="inventory__hiddenlabels--subtitle">
+              qty
+              <img
+                className="inventory__sorticon"
+                src={sorticon}
+                alt="sort icon"
+              />
+            </h4>
+            <h4 className="inventory__hiddenlabels--subtitle">actions</h4>
+          </div>
+
           <div className="inventory__leftcontain">
             <h4 className="inventory__subtitle">Inventory item</h4>
             <p className="inventory__details--item">
@@ -64,7 +107,9 @@ class WarehouseDetails extends React.Component {
           </div>
           <div className="inventory__rightcontain">
             <h4 className="inventory__subtitle">Status</h4>
-            <p className="inventory__status">in stock</p>
+            <p className="inventory__status inventory__status--outofstock">
+              in stock
+            </p>
             <h4 className="inventory__subtitle">qty</h4>
             <p className="inventory__details">500</p>
           </div>

@@ -26,7 +26,7 @@
 
 @mixin mobile-tableheader {
   font-family: $titillium-reg;
-  font-weight: 600;
+  font-weight: $semibold;
   font-size: 11px;
   line-height: 16px;
 }
@@ -39,7 +39,6 @@
 
 @mixin body-medium {
   font-family: $titillium-reg;
-  font-weight: 600;
   font-size: 13px;
   line-height: 20px;
 }
