@@ -12,6 +12,11 @@ router.get("/", (req, res) => {
     console.log(warehouses)
 })
 
+router.get('/:id', (req, res) => {
+    const singleWarehouse = warehouses.find((item) => item.id === req.params.id);
+    res.send(singleWarehouse)
+})
+
 router.put("/:id", (req, res) => {
     let updatedInfo = {
         id: req.params.id,
