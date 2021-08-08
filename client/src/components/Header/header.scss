@@ -1,7 +1,122 @@
+@import "../../partials/breakpoints";
+@import "../../partials/reset";
+@import "../../partials/typography";
+@import "../../partials/variables";
+
 .header {
-  color: red;
-  border: 1px solid red;
-  padding: initial, 16px;
+  background-color: $graphite;
+  padding: 24px 16px;
   width: 100%;
-  height: 180px;
+  height: 200px;
+
+  @include tablet {
+    width: 100%;
+    height: 186px;
+    padding: 24px 32px;
+  }
+
+  @include desktop {
+    width: 100%;
+    height: 186px;
+    padding: 32px 56px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex;
+
+    @include tablet {
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @include desktop {
+      max-width: $desktop-width;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+
+  &__logo {
+    height: 28px;
+    margin-bottom: 24px;
+
+    @include tablet {
+      margin-bottom: 0;
+    }
+
+    @include desktop {
+      margin-bottom: 0;
+    }
+  }
+
+  &__links-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    @include tablet {
+      width: auto;
+      justify-content: flex-end;
+    }
+
+    @include desktop {
+      width: auto;
+      justify-content: flex-end;
+    }
+  }
+
+  &__btn-link {
+    text-decoration: none;
+    width: 50%;
+
+    @include tablet {
+      width: 110px;
+    }
+    @include desktop {
+      width: 110px;
+    }
+  }
+
+  &__btn-warehouse {
+    margin-right: 16px;
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 20px;
+    color: $cloud;
+
+    &:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    &:active {
+      color: #fff;
+      background-color: $instock-black;
+    }
+  }
+
+  &__btn-text {
+    @include mobile-labels;
+    line-height: unset;
+    margin: 0;
+
+    @include tablet {
+      @include desk-labels;
+    }
+    @include desktop {
+      @include desk-labels;
+    }
+  }
 }

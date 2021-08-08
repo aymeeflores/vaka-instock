@@ -1,0 +1,343 @@
+@import "../../partials/breakpoints";
+@import "../../partials/reset";
+@import "../../partials/typography";
+@import "../../partials/variables";
+
+.inventory {
+  &__list-container {
+    background-color: #fff;
+    width: calc(100% - 32px);
+    height: auto;
+    margin: auto;
+    border-radius: 3px;
+    position: relative;
+    top: -64px;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+    @include tablet {
+      top: -94px;
+      width: calc(100% - 64px);
+      padding: 32px;
+    }
+
+    @include desktop {
+      max-width: $desktop-width;
+      padding: 32px 40px;
+    }
+  }
+
+  // section header styles
+  &__top {
+    padding: 32px 24px;
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    @include desktop {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__page-title {
+    @include mobile-header;
+    margin-bottom: 16px;
+
+    @include tablet {
+      @include desk-header;
+    }
+    @include desktop {
+      @include desk-header;
+    }
+  }
+
+  &__search-btn-container {
+    @include tablet {
+      display: flex;
+    }
+    @include desktop {
+      display: flex;
+    }
+  }
+
+  &__search-wrapper {
+    width: 100%;
+    position: relative;
+    margin-bottom: 16px;
+
+    @include tablet {
+      width: 185px;
+      margin-bottom: unset;
+      margin-right: 16px;
+    }
+    @include desktop {
+      width: 274px;
+      margin-bottom: unset;
+      margin-right: 16px;
+    }
+  }
+
+  &__search {
+    @include body-medium;
+    width: 100%;
+    height: 36px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid $cloud;
+  }
+  &__search-icon {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+  }
+  &__btn-link {
+    @include btn-link;
+  }
+  &__btn {
+    @include btn;
+    background-color: $instock-indigo;
+
+    &:hover {
+      background-color: $graphite;
+    }
+  }
+  &__btn-text {
+    @include btn-text;
+    color: #fff;
+  }
+
+  // table header styles
+  &__label-container {
+    display: none;
+
+    @include tablet {
+      margin-top: 22px;
+      display: unset;
+      background-color: $light-grey;
+      width: 100%;
+      // height: 40px;
+      padding: 11px 32px;
+      display: flex;
+      justify-content: space-between;
+    }
+    @include desktop {
+      margin-top: 22px;
+      display: unset;
+      background-color: $light-grey;
+      width: 100%;
+      // height: 40px;
+      padding: 11px 32px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__label-wrapper {
+    display: flex;
+    align-items: center;
+    width: auto;
+  }
+
+  &__label {
+    @include desk-tableheader;
+    color: $slate;
+    text-transform: uppercase;
+    margin-right: 9px;
+  }
+
+  &__sort-icon {
+    height: 12px;
+
+    &:active {
+      color: $instock-indigo;
+    }
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  // list items
+  &__list-item {
+    padding: 24px;
+    border-top: 1px solid $cloud;
+    border-bottom: 1px solid $cloud;
+
+    @include tablet {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 32px;
+    }
+    @include desktop {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 40px;
+    }
+  }
+
+  &__li-content-container {
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+
+    @include tablet {
+      margin: unset;
+    }
+    @include desktop {
+      margin: unset;
+    }
+  }
+
+  &__delete-icon {
+    @include tablet {
+      margin-right: 24px;
+    }
+    @include desktop {
+      margin-right: 24px;
+    }
+  }
+
+  &__left-container {
+    width: 50%;
+    @include tablet {
+      // TODO figure out width
+
+      display: flex;
+      align-items: center;
+      width: 44%;
+    }
+    @include desktop {
+      // TODO figure out width
+      width: 44%;
+      display: flex;
+      // justify-content: space-between;
+      align-items: center;
+      // margin-right: 36px;
+    }
+  }
+
+  &__right-container {
+    @include tablet {
+      // TODO figure out with here too
+      width: 55%;
+      display: flex;
+      align-items: center;
+      // justify-content: space-between;
+    }
+    @include desktop {
+      // TODO figure out with here too
+      width: 55%;
+      display: flex;
+      align-items: center;
+      // justify-content: space-between;
+    }
+  }
+
+  &__mobile-info-wrapper {
+    margin-bottom: 16px;
+
+    @include tablet {
+      margin-bottom: unset;
+    }
+    @include desktop {
+      margin-bottom: unset;
+    }
+  }
+
+  &__mobile-lable {
+    @include mobile-tableheader;
+    color: $slate;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+
+    @include tablet {
+      display: none;
+    }
+    @include desktop {
+      display: none;
+    }
+  }
+
+  &__info-text {
+    @include body-medium;
+  }
+
+  &__item-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    @include mobile-labels;
+    color: $instock-indigo;
+    margin-right: 11px;
+    text-transform: capitalize;
+  }
+
+  &__item-icon {
+    height: 20px;
+  }
+
+  &__inventory-item-wrapper {
+    @include tablet {
+      width: 55%;
+    }
+    @include desktop {
+      width: 55%;
+    }
+  }
+
+  &__status-wrapper {
+    @include tablet {
+      width: 32%;
+    }
+    @include desktop {
+      width: 32%;
+    }
+  }
+
+  &__qty-wrapper {
+    @include tablet {
+      width: 6%;
+    }
+    @include desktop {
+      width: 6%;
+    }
+  }
+
+  &__warehouse-wrapper {
+    @include tablet {
+      width: 37%;
+    }
+    @include desktop {
+      width: 37%;
+    }
+  }
+
+  &__status-bg {
+    background-color: rgba(21, 132, 99, 0.07);
+    padding: 4px 8px;
+    border-radius: 20px;
+    width: 100px;
+  }
+
+  &__status {
+    @include mobile-labels;
+    color: #158463;
+    text-transform: uppercase;
+    // width: auto;
+  }
+
+  // actions
+  &__actions-container {
+    display: flex;
+    justify-content: space-between;
+
+    @include tablet {
+      width: auto;
+    }
+  }
+}
