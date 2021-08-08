@@ -13,12 +13,11 @@ class App extends React.Component {
       <>
         <BrowserRouter>
           <Header />
-          <EditInventoryItem />
           <Switch>
-            <Route path="/">
+            <Route path="/" exact>
               <Warehouses />
             </Route>
-            <Route path="/inventory">
+            <Route exact path="/inventory">
               <Inventory />
             </Route>
           </Switch>

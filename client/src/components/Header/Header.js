@@ -9,8 +9,8 @@ const Header = () => {
         <img className="header__logo" src={logo} alt="InStock Logo" />
         <article className="header__links-container">
           {/* warehouse btn */}
-          <Link to="/" className="header__btn-link">
-            <article className="header__btn header__btn-warehouse">
+          <Link to="/" className="header__btn-link header__btn-warehouse">
+            <article className="header__btn">
               <p className="header__btn-text">Warehouses</p>
             </article>
           </Link>

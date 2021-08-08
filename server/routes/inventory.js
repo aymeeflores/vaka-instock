@@ -12,12 +12,10 @@ const getInventoryData = () => {
 
 // get list of all inventory items
 
-/* AYMEE UNCOMMENT UR WELCOMEEEE
 router.get("/", (req, res) => {
   const inventories = getInventoryData();
   res.json(inventories);
 });
-*/
 
 // get single inventory item
 router.get("/:id", (req, res) => {
@@ -27,5 +25,21 @@ router.get("/:id", (req, res) => {
 });
 
 // post new inventory item
+router.post("/add/:id", (req, res) => {
+  const inventories = getInventoryData();
+  const newItem = {
+    id: uniqid(),
+    warehouseID: uniqid(),
+    warehouseName: req.body.warehouseName,
+    itemName: req.body.itemName,
+    description: req.body.description,
+    category: req.body.category,
+    status: req.body.status,
+    quantity: req.body.quantity,
+  };
+  inventories.push(newItem);
+  fs.writeFileSync("./data/inventories.json", JSON.stringify(inventories));
+  res.json(inventories);
+});
 
 module.exports = router;
