@@ -1,3 +1,7 @@
 @import "./partials/reset";
+@import "./partials/variables";
 
 @include css-reset;
+body {
+  background-color: $light-grey;
+}

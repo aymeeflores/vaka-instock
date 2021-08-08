@@ -12,12 +12,11 @@ class App extends React.Component {
       <>
         <BrowserRouter>
           <Header />
-
           <Switch>
             <Route path="/" exact>
               <Warehouses />
             </Route>
-            <Route path="/inventory">
+            <Route exact path="/inventory">
               <Inventory />
             </Route>
           </Switch>

@@ -96,3 +96,37 @@
   font-size: 12px;
   line-height: 18px;
 }
+
+// btns
+@mixin btn-link {
+  text-decoration: none;
+  width: 100%;
+
+  @include tablet {
+    width: auto;
+  }
+  @include desktop {
+    width: auto;
+  }
+}
+
+@mixin btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 18px;
+  border-radius: 20px;
+}
+
+@mixin btn-text {
+  @include mobile-labels;
+  line-height: unset;
+  margin: 0;
+
+  @include tablet {
+    @include desk-labels;
+  }
+  @include desktop {
+    @include desk-labels;
+  }
+}
