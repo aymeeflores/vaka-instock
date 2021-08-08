@@ -24,6 +24,12 @@ router.get("/:id", (req, res) => {
   res.send(singleItem);
 });
 
+router.get('/warehouse-inventory/:warehouseID', (req, res) => {
+  const inventories = getInventoryData();
+  const warehouseInventory = inventories.filter((item) => item.warehouseID === req.params.warehouseID)
+  res.send(warehouseInventory);
+})
+
 // post new inventory item
 router.post("/add/:id", (req, res) => {
   const inventories = getInventoryData();
