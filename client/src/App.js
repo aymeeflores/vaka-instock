@@ -7,6 +7,7 @@ import Footer from "./components/Footer/Footer";
 import Inventory from "./pages/Inventory/Inventory";
 import EditInventoryItem from "./components/EditInventoryItem/EditInventoryItem";
 
+
 class App extends React.Component {
   render() {
     return (
