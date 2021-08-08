@@ -44,7 +44,7 @@ router.put("/:id", (req, res) => {
         warehouse.id == warehouseId
         return index
     })
-    warehouses[indexOfWarehouse] = updatedInfo
+    warehouses[indexOfWarehouse - 1] = updatedInfo
     console.log(warehouses)
     fs.writeFileSync((path.resolve(currentdir, "../data/warehouses.json")), JSON.stringify(warehouses))
 })
