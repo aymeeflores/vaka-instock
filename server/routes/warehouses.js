@@ -88,6 +88,8 @@ router.delete("/:id", (req, res) => {
       inventories.splice(idx, 1);
     }
 
+
+
   });
 
   // updates inventory json file without the removed items
