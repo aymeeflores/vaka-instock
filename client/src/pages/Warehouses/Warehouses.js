@@ -50,48 +50,47 @@ class Warehouses extends React.Component {
                                 <WarehouseList warehouseList={this.state.warehouseList} />
 
                             </Route>
-                            <Route path="/warehouses/edit/:id"
+                            {/* <Route path="/warehouses/edit/:id"
                                 render={(routerParams) => {
                                     return (
-                                //  change the component to whatever your components called
-                                    //     <EditWarehouse
-                                    //     {...routerParams}
-                                    //     warehouse={this.state.inventoryItems}
-                                    //   />
+                                 change the component to whatever your components called
+                                        <EditWarehouse
+                                        {...routerParams}
+                                        warehouse={this.state.inventoryItems}
+                                      />
                                 );
                                 }}>
-                            </Route>
-                            <Route path="/warehouses/details/:id"
+                            </Route> */}
+                            {/* <Route path="/warehouses/details/:id"
                                 render={(routerParams) => {
                                     return (
-                                //  change the component to whatever your components called
-                                    //     <WarehouseDetails
-                                    //     {...routerParams}
-                                    //     warehouse={this.state.inventoryItems}
-                                    //   />
+                                 change the component to whatever your components called
+                                        <WarehouseDetails
+                                        {...routerParams}
+                                        warehouse={this.state.inventoryItems}
+                                      />
                                 );
                                 }}>
-                            </Route>
-                            <Route path="/warehouses/add/:id"
+                            </Route> */}
+                            {/* <Route path="/warehouses/add/:id"
                                 render={(routerParams) => {
                                     return (
-                                //  change the component to whatever your components called
-                                    //     <AddWarehouse
-                                    //     {...routerParams}
-                                    //     warehouse={this.state.inventoryItems}
-                                    //   />
+                                 change the component to whatever your components called
+                                        <AddWarehouse
+                                        {...routerParams}
+                                        warehouse={this.state.inventoryItems}
+                                      />
                                 );
                                 }}>
-                            </Route>
+                            </Route> */}
                             <Route path="/warehouses/delete/:id"
                                 render={(routerParams) => {
                                     return (
-                                //  change the component to whatever your components called
-                                    //     <DeleteWarehouse
-                                    //     {...routerParams}
-                                    //     warehouse={this.state.inventoryItems}
-                                    //   />
-                                );
+                                        <DeleteWarehouse
+                                            {...routerParams}
+                                            warehouse={this.state.inventoryItems}
+                                        />
+                                    );
                                 }}>
                             </Route>
                         </Switch>
