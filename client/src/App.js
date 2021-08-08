@@ -6,6 +6,8 @@ import Warehouses from "./pages/Warehouses/Warehouses";
 import Footer from "./components/Footer/Footer";
 import Inventory from "./pages/Inventory/Inventory";
 
+
+
 class App extends React.Component {
   render() {
     return (
