@@ -41,13 +41,17 @@ class Warehouses extends React.Component {
     }
 
     render() {
+        { console.log(this.state) }
         return (
             <div className='warehouses'>
                 {this.state.warehouseList && (
                     <BrowserRouter>
                         <Switch>
                             <Route path='/' exact>
-                                <WarehouseList warehouseList={this.state.warehouseList} />
+                                <WarehouseList warehouseList={this.state.warehouseList} deleteWindow={this.showModal} />
+                                <DeleteWarehouse show={this.state.show} cancel={this.onCancel} delete={this.onDelete} />
+
+
 
                             </Route>
                             {/* <Route path="/warehouses/edit/:id"
@@ -89,6 +93,8 @@ class Warehouses extends React.Component {
                                         <DeleteWarehouse
                                             {...routerParams}
                                             warehouse={this.state.inventoryItems}
+                                            delete={this.onDelete}
+                                            cancel={this.onCancel}
                                         />
                                     );
                                 }}>
