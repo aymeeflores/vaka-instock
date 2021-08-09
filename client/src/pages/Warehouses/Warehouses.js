@@ -13,6 +13,7 @@ class Warehouses extends React.Component {
     show: false,
   };
 
+  // delete warehouse functions
   showModal = () => {
     this.setState({
       show: true,
@@ -75,11 +76,12 @@ class Warehouses extends React.Component {
                             </Route> */}
               <Route
                 path="/warehouses/add"
+                exact
                 render={(routerParams) => {
                   return (
                     <AddNewWarehouse
                       {...routerParams}
-                      warehouse={this.state.inventoryItems}
+                      warehouse={this.state.warehouseList}
                     />
                   );
                 }}
@@ -90,7 +92,7 @@ class Warehouses extends React.Component {
                   return (
                     <DeleteWarehouse
                       {...routerParams}
-                      warehouse={this.state.inventoryItems}
+                      warehouseList={this.state.inventoryItems}
                     />
                   );
                 }}

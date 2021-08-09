@@ -8,7 +8,6 @@ import sort from "../../assets/Icons/sort-24px.svg";
 import "./WarehouseList.scss";
 
 const WarehouseList = ({ warehouseList }) => {
-  console.log(warehouseList);
   return (
     <main className="w-list">
       <div className="w-list__top">
@@ -21,7 +20,7 @@ const WarehouseList = ({ warehouseList }) => {
             name="search"
             placeholder="Search..."
           />
-          <img src={search} className="w-list__search-img" />
+          <img src={search} className="w-list__search-img" alt="search icon" />
           <Link to="/warehouses/add">
             <input
               className="w-list__add"
@@ -36,28 +35,28 @@ const WarehouseList = ({ warehouseList }) => {
       <div className="w-list__subheading-bar">
         <div className="w-list__subheading--flex">
           <h4 className="w-list__subheading-2">WAREHOUSE</h4>
-          <img className="w-list__sort" src={sort} />
+          <img className="w-list__sort" src={sort} alt="sort icon" />
         </div>
         <div className="w-list__subheading--flex">
           <h4 className="w-list__subheading-2">ADDRESS</h4>
-          <img className="w-list__sort" src={sort} />
+          <img className="w-list__sort" src={sort} alt="sort icon" />
         </div>
         <div className="w-list__subheading--flex">
           <h4 className="w-list__subheading-2 w-list__subheading-2--spacing">
             CONTACT NAME
           </h4>
-          <img className="w-list__sort" src={sort} />
+          <img className="w-list__sort" src={sort} alt="sort icon" />
         </div>
         <div className="w-list__subheading--flex">
           <h4 className="w-list__subheading-2">CONTACT INFORMATION</h4>
-          <img className="w-list__sort" src={sort} />
+          <img className="w-list__sort" src={sort} alt="sort icon" />
         </div>
         <h4 className="w-list__subheading-2">ACTIONS</h4>
       </div>
       <div>
         {warehouseList.map((data) => {
           return (
-            <div className="w-list__container">
+            <div key={data.id} className="w-list__container">
               <div className="w-list__left">
                 <h4 className="w-list__subheading">WAREHOUSE</h4>
                 {/* This needs to be linked to whatever the individual warehouse details path will be */}
@@ -65,7 +64,11 @@ const WarehouseList = ({ warehouseList }) => {
                   <Link className="w-list__name">
                     <p>{data.name}</p>
                   </Link>
-                  <img className="w-list__chev" src={chevron} />
+                  <img
+                    className="w-list__chev"
+                    src={chevron}
+                    alt="chevron icon"
+                  />
                 </div>
                 <h4 className="w-list__subheading w-list__subheading--lower">
                   ADDRESS
@@ -87,10 +90,10 @@ const WarehouseList = ({ warehouseList }) => {
               </div>
               <div className="w-list__icons">
                 <Link>
-                  <img src={trash} />
+                  <img src={trash} alt="delete icon" />
                 </Link>
                 <Link>
-                  <img className="w-list__pen" src={pen} />
+                  <img className="w-list__pen" src={pen} alt="edit icon" />
                 </Link>
               </div>
             </div>
