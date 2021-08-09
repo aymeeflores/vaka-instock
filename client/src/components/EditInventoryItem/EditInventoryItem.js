@@ -9,7 +9,6 @@ class EditInventoryItem extends React.Component {
     // state  
     state = {
         warehouseList: [],
-        warehouseListIds: [],
         categories: null,
         stock: null,
         itemName: null,
@@ -33,167 +32,167 @@ class EditInventoryItem extends React.Component {
     // on Submit function to edit object
     onSubmit = (event) => {
         event.preventDefault()
-        console.log(event.target.itemName.value)
-        newItem = {
-            warehouseID: req.body.warehouseID,
-            warehouseName: req.body.warehouseName,
-            itemName: req.body.itemName,
-            description: req.body.description,
-            category: req.body.category,
-            status: req.body.status,
-            quantity: req.body.quantity,
-
-            // }
+        const newItem = {
+            warehouseID: this.itemDetails.warehouseID,
+            warehouseName: (event.target.warehouseLocations.value),
+            itemName: event.target.itemName.value,
+            description: event.target.description.value,
+            category: event.target.itemCategory.value,
+            status: this.itemDetails.status,
+            quantity: this.state.quantity
         }
-        // on change function for Name
-        changeName = (e) => {
-            this.setState({
-                itemName: e.value
-            })
-        }
-        // on change function for Description
-        changeDescription = (e) => {
-            this.setState({
-                itemDescription: e.value
-            })
-        }
-
-        // Mounting component to allow for assigning of categories and stock values in state
-        componentDidMount() {
-            axios.get(`${API_URL}/warehouses`)
-                .then((response) => {
-                    (response.data).forEach((warehouse) => {
-                        this.setState({
-                            warehouseList: [...this.state.warehouseList, warehouse.name],
-                            warehouseListIds: [...this.state.warehouseListIds, warehouse.id]
-                        });
-                    })
-                })
-                .then(this.setState({
-                    categories: (this.itemDetails.categories),
-                    stock: (this.itemDetails.status == "In Stock"),
-                    itemName: (this.itemDetails.itemName),
-                    itemDescription: (this.itemDetails.description),
-                    quantity: (this.itemDetails.quantity)
-                }))
-        }
-
-        render() {
-            console.log(this.state)
-            return (
-                <div className="edit-inventory">
-                    <div className="inventory-header">
-                        <img src={arrow} />
-                        <h1>Edit Inventory Item</h1>
-                    </div>
-                    <form className="inventory-form" onSubmit={this.onSubmit}>
-                        <div className="item-information">
-                            <h2 className="item-information__header">Item Details</h2>
-                            {/* Item Name */}
-                            <label className="item-information__title">
-                                Item Name
-                                <input type="text" name="itemName"
-                                    className="item-information__input item-information__input--regular" value={this.state.itemName} onChange={this.changeName} />
-                            </label>
-                            {/* Item Description */}
-                            <label className="item-information__title" htmlFor="item-description">
-                                Description
-                                <textarea className="item-information__input 
-                        item-information__input--big" value={this.state.itemDescription} onChange={this.changeDescription} ></textarea>
-                            </label>
-                            <label className="item-information__title">
-                                Category
-                                <select className="item-information__input item-information__input--regular" name="item-category">
-                                    {/* THIS IS WHERE ITEM CATEGORY GOES */}
-                                    {this.categories.map((category) => {
-                                        if (category == this.state.categories) {
-                                            return (<option value={this.state.categories} selected="selected">{this.state.categories}</option>)
-                                        }
-                                        else {
-                                            return (<option value={category}>{category}</option>)
-                                        }
-                                    })}
-                                </select>
-                                { }
-                            </label>
-
-                        </div>
-                        <div className="item-information">
-                            <h2 className="item-information__header">Item Availability</h2>
-                            <label className="item-information__title">
-                                <span className="status">Status</span>
-                                {/* THIS IS WHERE ITEM STATUS GOES */}
-                                {(this.state.stock) ? (
-                                    // This is if its in stock
-                                    <>
-                                        {console.log(this.state.stock)}
-                                        < span className="status-options">
-                                            <label className="stock-availability stock-availability--greyed">
-                                                <input type="radio" name="status" value="in-stock" className="stock-availability__radio-buttons" />
-                                                In stock
-                                            </label>
-                                        </span>
-                                        {/* Out of Stock Option */}
-                                        <span className="status-options">
-                                            <label className="stock-availability stock-availability--greyed">
-                                                <input type="radio" name="status" value="out-of-stock"
-                                                    className="stock-availability__radio-buttons"
-                                                    disabled={true} />
-                                                Out of stock
-                                            </label>
-                                        </span>
-                                    </>) :
-                                    // This is if its out of stock
-                                    (<>
-                                        {console.log(this.state.stock)}
-                                        < span className="status-options">
-                                            <label className="stock-availability stock-availability--greyed">
-                                                <input type="radio" name="status" value="in-stock" className="stock-availability__radio-buttons" disabled={true} />
-                                                In stock
-                                            </label>
-                                        </span>
-                                        {/* Out of Stock Option */}
-                                        <span className="status-options">
-                                            <label className="stock-availability stock-availability--greyed">
-                                                <input type="radio" name="status" value="out-of-stock"
-                                                    className="stock-availability__radio-buttons " aria-checked={true} />
-                                                Out of stock
-                                            </label>
-                                        </span>
-                                    </>)}
-                            </label>
-
-
-
-                            <label className="item-information__title">
-                                Warehouse
-                                {/* THIS IS WHERE ITEM WAREHOUSE GOES  */}
-                                <select className="item-information__input item-information__input--regular" name="warehouse-locations">
-                                    {this.state.warehouseList.map((warehouse) => {
-                                        if (warehouse == this.itemDetails.warehouseName) {
-                                            return (
-                                                <option value={warehouse} selected="selected">{warehouse}</option>
-                                            )
-                                        }
-                                        else {
-                                            return (
-                                                <option value={warehouse}>{warehouse}</option>
-                                            )
-                                        }
-                                    })}
-                                </select>
-                            </label>
-
-                        </div>
-                        <div className="submitting">
-                            <button className="submitting__button">Cancel</button>
-                            <button className="submitting__button submitting__button--blueBackground">Save</button>
-                        </div>
-                    </form>
-                </div >
-            )
-        }
+        axios.put(`${API_URL}/inventory/` + this.props.match.params.id, newItem)
+            .then(this.props.history.push('/inventory'))
+        console.log(newItem)
+    }
+    // on change function for Name
+    changeName = (e) => {
+        this.setState({
+            itemName: e.value
+        })
+        console.log(this.state.itemName)
+    }
+    // on change function for Description
+    changeDescription = (e) => {
+        this.setState({
+            itemDescription: e.value
+        })
     }
 
-    export default EditInventoryItem
+    // Mounting component to allow for assigning of categories and stock values in state
+    componentDidMount() {
+        axios.get(`${API_URL}/warehouses`)
+            .then((response) => {
+                (response.data).forEach((warehouse) => {
+                    this.setState({
+                        warehouseList: [...this.state.warehouseList, warehouse.name]
+                    });
+                })
+            })
+            .then(this.setState({
+                categories: (this.itemDetails.categories),
+                stock: (this.itemDetails.status == "In Stock"),
+                itemName: (this.itemDetails.itemName),
+                itemDescription: (this.itemDetails.description),
+                quantity: (this.itemDetails.quantity)
+            }))
+    }
+
+    render() {
+        console.log(this.state)
+        return (
+            <div className="edit-inventory">
+                <div className="inventory-header">
+                    <img src={arrow} />
+                    <h1>Edit Inventory Item</h1>
+                </div>
+                <form className="inventory-form" onSubmit={this.onSubmit}>
+                    <div className="item-information">
+                        <h2 className="item-information__header">Item Details</h2>
+                        {/* Item Name */}
+                        <label className="item-information__title">
+                            Item Name
+                            <input type="text" name="itemName"
+                                className="item-information__input item-information__input--regular" value={this.state.itemName} onChange={this.changeName} />
+                        </label>
+                        {/* Item Description */}
+                        <label className="item-information__title" htmlFor="item-description">
+                            Description
+                            <textarea name="description" className="item-information__input 
+                        item-information__input--big" value={this.state.itemDescription} onChange={this.changeDescription} ></textarea>
+                        </label>
+                        <label className="item-information__title">
+                            Category
+                            <select className="item-information__input item-information__input--regular" name="itemCategory">
+                                {/* THIS IS WHERE ITEM CATEGORY GOES */}
+                                {this.categories.map((category) => {
+                                    if (category == this.state.categories) {
+                                        return (<option value={this.state.categories} selected="selected">{this.state.categories}</option>)
+                                    }
+                                    else {
+                                        return (<option value={category}>{category}</option>)
+                                    }
+                                })}
+                            </select>
+                        </label>
+
+                    </div>
+                    <div className="item-information">
+                        <h2 className="item-information__header">Item Availability</h2>
+                        <label className="item-information__title">
+                            <span className="status">Status</span>
+                            {/* THIS IS WHERE ITEM STATUS GOES */}
+                            {(this.state.stock) ? (
+                                // This is if its in stock
+                                <>
+                                    {console.log(this.state.stock)}
+                                    < span className="status-options">
+                                        <label className="stock-availability stock-availability--greyed">
+                                            <input type="radio" name="status" value="in-stock" className="stock-availability__radio-buttons" />
+                                            In stock
+                                        </label>
+                                    </span>
+                                    {/* Out of Stock Option */}
+                                    <span className="status-options">
+                                        <label className="stock-availability stock-availability--greyed">
+                                            <input type="radio" name="status" value="out-of-stock"
+                                                className="stock-availability__radio-buttons"
+                                                disabled={true} />
+                                            Out of stock
+                                        </label>
+                                    </span>
+                                </>) :
+                                // This is if its out of stock
+                                (<>
+                                    {console.log(this.state.stock)}
+                                    < span className="status-options">
+                                        <label className="stock-availability stock-availability--greyed">
+                                            <input type="radio" name="status" value="in-stock" className="stock-availability__radio-buttons" disabled={true} />
+                                            In stock
+                                        </label>
+                                    </span>
+                                    {/* Out of Stock Option */}
+                                    <span className="status-options">
+                                        <label className="stock-availability stock-availability--greyed">
+                                            <input type="radio" name="status" value="out-of-stock"
+                                                className="stock-availability__radio-buttons " aria-checked={true} />
+                                            Out of stock
+                                        </label>
+                                    </span>
+                                </>)}
+                        </label>
+
+
+
+                        <label className="item-information__title">
+                            Warehouse
+                            {/* THIS IS WHERE ITEM WAREHOUSE GOES  */}
+                            <select className="item-information__input item-information__input--regular" name="warehouseLocations">
+                                {this.state.warehouseList.map((warehouse) => {
+                                    if (warehouse == this.itemDetails.warehouseName) {
+                                        return (
+                                            <option value={warehouse} selected="selected">{warehouse}</option>
+                                        )
+                                    }
+                                    else {
+                                        return (
+                                            <option value={warehouse}>{warehouse}</option>
+                                        )
+                                    }
+                                })}
+                            </select>
+                        </label>
+
+                    </div>
+                    <div className="submitting">
+                        <button className="submitting__button">Cancel</button>
+                        <button className="submitting__button submitting__button--blueBackground">Save</button>
+                    </div>
+                </form>
+            </div >
+        )
+    }
+}
+
+export default EditInventoryItem
 
