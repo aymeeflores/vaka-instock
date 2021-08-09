@@ -55,7 +55,7 @@ class Inventory extends Component {
                 }}
               ></Route>
               <Route
-                path="/add/:id"
+                path="/inventory/add"
                 render={(routerParams) => {
                   return (
                     <AddNewInventoryItem

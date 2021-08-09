@@ -1,0 +1,158 @@
+@import "../../partials/breakpoints";
+@import "../../partials/reset";
+@import "../../partials/typography";
+@import "../../partials/variables";
+
+.nw {
+  &__container {
+    background-color: #fff;
+    width: calc(100% - 32px);
+    height: auto;
+    margin: auto;
+    border-radius: 3px;
+    position: relative;
+    top: -64px;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+    @include tablet {
+      top: -94px;
+      width: calc(100% - 64px);
+    }
+
+    @include desktop {
+      width: $desktop-width;
+      margin: auto;
+    }
+  }
+
+  // section header styles
+  &__top {
+    display: flex;
+    border-bottom: 1px solid $cloud;
+    padding: 32px 36px 24px 28px;
+    @include tablet {
+      display: flex;
+      align-items: center;
+    }
+    @include desktop {
+      display: flex;
+      align-items: center;
+      padding: 32px 36px 21px 44px;
+    }
+  }
+
+  &__page-title {
+    @include mobile-header;
+    margin-left: 12px;
+
+    @include tablet {
+      @include desk-header;
+    }
+    @include desktop {
+      @include desk-header;
+    }
+  }
+  &__flex-container {
+    @include tablet {
+      display: flex;
+      padding: 24px 0;
+    }
+  }
+  &__form-title {
+    padding: 16px 24px 24px 24px;
+
+    @include tablet {
+      padding: 0 32px 32px 32px;
+    }
+    @include desktop {
+      padding: 0 40px 40px 40px;
+    }
+  }
+
+  &__warehouse {
+    border-bottom: 1px solid $cloud;
+    padding-bottom: 8px;
+
+    @include tablet {
+      border-bottom: none;
+      border-right: 1px solid $cloud;
+      width: 50%;
+    }
+  }
+  &__contact {
+    @include tablet {
+      width: 50%;
+    }
+  }
+
+  &__input-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 24px 16px 24px;
+
+    @include tablet {
+      padding: 0 32px 16px 32px;
+    }
+    @include desktop {
+      padding: 0 40px 24px 40px;
+    }
+  }
+
+  &__input-label {
+    @include mobile-labels;
+    margin-bottom: 4px;
+
+    @include tablet {
+      @include desk-labels;
+    }
+  }
+
+  &__input {
+    @include body-medium;
+    border-radius: 20px;
+    border: 1px solid $cloud;
+    padding: 8px 16px;
+
+    @include tablet {
+      @include desk-bodymedium;
+    }
+  }
+
+  &__btn-container {
+    display: flex;
+    padding: 16px 24px;
+    background-color: $light-grey;
+
+    @include tablet {
+      justify-content: flex-end;
+      padding: 16px 32px;
+    }
+  }
+
+  &__btn-cancel {
+    @include btn;
+    @include mobile-labels;
+    background-color: #fff;
+    width: 50%;
+    margin-right: 16px;
+    color: $slate;
+    border: 1px solid $cloud;
+
+    @include tablet {
+      @include desk-labels;
+      width: auto;
+    }
+  }
+  &__btn-submit {
+    @include btn;
+    @include mobile-labels;
+    width: 50%;
+    border: none;
+    color: #fff;
+    background-color: $instock-indigo;
+
+    @include tablet {
+      @include desk-labels;
+      width: auto;
+    }
+  }
+}
