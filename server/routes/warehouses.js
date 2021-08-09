@@ -17,16 +17,18 @@ const getWarehouseData = () => {
     return parsedWarehouseData;
   };
 
+  //get list of warehouses
 router.get("/", (req, res) => {
   res.send(warehouses);
-  console.log(warehouses);
 });
 
+// get single warehouse details
 router.get("/:id", (req, res) => {
   const singleWarehouse = warehouses.find((item) => item.id === req.params.id);
   res.send(singleWarehouse);
 });
 
+//edit a warehouse
 router.put("/:id", (req, res) => {
   let updatedInfo = {
     id: req.params.id,
@@ -55,6 +57,7 @@ router.put("/:id", (req, res) => {
   );
 });
 
+// delete a warehouse (and it's inventory)
 router.delete("/:id", (req, res) => {
   // lets find the array index of that ID on warehouse array
   let itemIndex = warehouses.findIndex(
@@ -102,7 +105,7 @@ router.delete("/:id", (req, res) => {
   res.send(`${req.params.id} DELETED`);
 });
   
-
+// add a new warehouse
 router.post("/", 
     
     body('name').exists({checkFalsy: true}),
