@@ -2,7 +2,8 @@ import React from 'react';
 import "./editInventoryItem.scss";
 import arrow from "../../assets/Icons/arrow_back-24px.svg"
 
-const EditInventoryItem = () => {
+const EditInventoryItem = (props) => {
+    console.log(props)
     return (
         <div className="edit-inventory">
             <div className="inventory-header">
