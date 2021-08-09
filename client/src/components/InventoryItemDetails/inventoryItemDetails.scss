@@ -1,0 +1,202 @@
+@use '../../partials/variables';
+@use '../../partials/typography' as *;
+@use '../../partials/breakpoints' as *;
+
+
+.inventory-item{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 1rem;
+    background-color: #fff;
+    width: calc(100% - 32px);
+    height: auto;
+    margin: auto;
+    border-radius: 3px;
+    position: relative;
+    top: -64px;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+    @include tablet {
+        top: -94px;
+        width: calc(100% - 64px);
+        }
+    
+    @include desktop {
+        max-width: $desktop-width;
+    }
+    .item-title{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2rem 1.5rem;
+        border-bottom: 0.0625rem solid variables.$cloud;
+        @include tablet{
+            padding: 2rem;
+        }
+        @include desktop{
+            padding: 2rem 2.5rem;
+        }
+        .item{ 
+            display: flex;
+            align-items: center;
+            .link-arrow{
+                align-self: baseline;
+                .back-arrow{
+                    width: 1.25rem;
+                    height: 1.25rem;
+                    margin-right: 0.75rem;
+                }
+            }
+            &__header{
+                @include mobile-header;
+            }
+        }
+        .buttons{
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 50%;
+            background-color: variables.$instock-indigo;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            float: right;
+            @include tablet{
+                width: 5.0625rem;
+                height: 2.375rem;
+                border-radius: 1.25rem;
+            }
+            @include desktop{
+                width: 5.0625rem;
+                height: 2.375rem;
+                border-radius: 1.25rem;
+            }
+            &__edit-button--white{
+                width: 1rem;
+                height: 1rem;
+            }
+            &__edit-text{
+                display: none;
+                @include tablet{
+                    display: inline-block;
+                    color: white;
+                    @include desk-bodymedium
+                }
+                @include desktop{
+                    display: inline-block;
+                    color: white;
+                    @include desk-bodymedium
+                }
+            }
+        }
+    }
+    .item-description{
+        padding: 0 1.5rem;
+        @include tablet{
+            display: flex;
+            padding: 0 2rem;
+        }
+        @include desktop{
+            display: flex;
+            width: 100%;
+            padding: 0 2.5rem;
+        }
+        .item-text-left{
+            @include tablet{
+                width: 50%;
+                margin-bottom: 2rem;
+                padding-right: 1.5rem;
+                margin-top: 1.5rem;
+                border-right: 0.0625rem solid variables.$cloud;
+            }
+            @include desktop{
+                width: 50%;
+                margin-bottom: 2rem;
+                padding-right: 1.5rem;
+                margin-top: 1.5rem;
+                border-right: 0.0625rem solid variables.$cloud;
+            }
+            .item-info{
+                &__title{
+                    text-transform: uppercase;
+                    margin-top: 1rem;
+                    @include tablet{
+                        margin-top: 0;
+                    }
+                    @include desktop{
+                        margin-top: 0rem;
+                    }
+                }
+                &__title--last{
+                    @include tablet{
+                        margin-top: 2rem;
+                    }
+                    @include desktop{
+                        margin-top: 1.5rem;
+                    }
+                }
+                &__details{
+
+                }
+            }
+        }
+        .item-text-right{
+            @include tablet{
+                width: 50%;
+                margin-top: 1.5rem;
+                margin-bottom: 2rem;
+                padding-left: 1.5rem;
+            }
+            @include desktop{
+                width: 50%;
+                margin-top: 1.5rem;
+                margin-bottom: 2rem;
+                padding-left: 1.5rem;
+            }
+            .item-stock-info{
+                display: flex;
+                .item-stock{
+                    margin-right: 26%;
+                    &__title{
+                        text-transform: uppercase;
+                        margin-top: 1rem;
+                        @include tablet{
+                            margin-top: 0;
+                        }
+                        @include desktop{
+                            margin-top: 0;
+                        }
+                    }
+                    &__status--green-background{
+                        background: rgba(21, 132, 99, 0.07);
+                        }
+                    &__status--green-text{
+                            color: #158463;
+                        }
+                    &__status--red-background{
+                        background:rgba(201, 69, 21, 0.07);;
+                        }
+                    &__status--red-text{
+                            color: #C94515;
+                        }    
+                    }    
+                }
+            .item-info{
+                &__title{
+                    text-transform: uppercase;
+                    margin-top: 1rem;
+                }
+                &__title--bottom{
+                    @include tablet{
+                        margin-top: 2rem;
+                    }
+                    @include desktop{
+                        margin-top: 1.5rem;
+                    }
+                }
+                &__details--last{
+                    margin-bottom: 1rem;
+                }
+            }
+            }
+        }
+    }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import "./editInventoryItem.scss";
 import arrow from "../../assets/Icons/arrow_back-24px.svg"
 import axios from 'axios';

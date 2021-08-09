@@ -24,7 +24,7 @@ const InventoryList = ({ inventoryItems }) => {
                 />
                 <input
                   className="inventory__search"
-                  type="text"
+                  type="search"
                   name="search"
                   id="search"
                   placeholder="Search..."
