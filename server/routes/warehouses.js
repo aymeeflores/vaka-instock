@@ -5,6 +5,9 @@ const path = require("path");
 const uniqId = require("uniqid");
 const { body, validationResult } = require("express-validator");
 
+
+
+
 currentdir = __dirname;
 const warehouses = JSON.parse(
   fs.readFileSync(path.resolve(currentdir, "../data/warehouses.json"))
@@ -16,16 +19,20 @@ const getWarehouseData = () => {
   return parsedWarehouseData;
 };
 
+  //get list of warehouses
 router.get("/", (req, res) => {
   res.send(warehouses);
-  console.log(warehouses);
+
 });
+
+// get single warehouse details
 
 router.get("/:id", (req, res) => {
   const singleWarehouse = warehouses.find((item) => item.id === req.params.id);
   res.send(singleWarehouse);
 });
 
+//edit a warehouse
 router.put("/:id", (req, res) => {
   let updatedInfo = {
     id: req.params.id,
@@ -46,7 +53,9 @@ router.put("/:id", (req, res) => {
     warehouse.id == warehouseId;
     return index;
   });
-  warehouses[indexOfWarehouse] = updatedInfo;
+
+  warehouses[indexOfWarehouse - 1 ] = updatedInfo;
+
   console.log(warehouses);
   fs.writeFileSync(
     path.resolve(currentdir, "../data/warehouses.json"),
@@ -54,8 +63,59 @@ router.put("/:id", (req, res) => {
   );
 });
 
-router.post(
-  "/",
+
+// delete a warehouse (and it's inventory)
+router.delete("/:id", (req, res) => {
+  // lets find the array index of that ID on warehouse array
+  let itemIndex = warehouses.findIndex(
+    (warehouse) => warehouse.id == req.params.id
+  );
+
+  // after found lets delete that array item from warehouses array
+  warehouses.splice(itemIndex, 1);
+
+  // update warehouses.json with new array without the deleted item
+  fs.writeFileSync(
+    path.resolve(currentdir, "../data/warehouses.json"),
+    JSON.stringify(warehouses)
+  );
+
+  // get inventory list
+  const inventories = JSON.parse(
+    fs.readFileSync(path.resolve(currentdir, "../data/inventories.json"))
+  );
+
+  // get inventory items that have warehouseID equals to warehouse id to be deleted
+  let inventoryItems = inventories.filter(
+    (item) => item.warehouseID == req.params.id
+  );
+
+  // go through each returned item, find index and remove it from inventory list
+  inventoryItems.forEach((item) => {
+    let idx = inventories.indexOf(item);
+    if (idx !== -1) {
+      // if index is found, remove item from array
+      inventories.splice(idx, 1);
+    }
+
+
+
+  });
+
+  // updates inventory json file without the removed items
+  fs.writeFileSync(
+    path.resolve(currentdir, "../data/inventories.json"),
+    JSON.stringify(inventories)
+  );
+
+  // send response
+  res.send(`${req.params.id} DELETED`);
+});
+  
+// add a new warehouse
+router.post("/", 
+    
+
 
   body("name").exists({ checkFalsy: true }),
   body("address").exists({ checkFalsy: true }),
@@ -91,5 +151,6 @@ router.post(
     console.log(req.body.contact.name);
   }
 );
+
 
 module.exports = router;
