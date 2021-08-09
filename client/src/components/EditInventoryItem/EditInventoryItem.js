@@ -41,9 +41,13 @@ class EditInventoryItem extends React.Component {
             status: this.itemDetails.status,
             quantity: this.state.quantity
         }
-        axios.put(`${API_URL}/inventory/` + this.props.match.params.id, newItem)
-            .then(this.props.history.push('/inventory'))
-        console.log(newItem)
+        if ((!newItem.itemName) || (!newItem.description)) {
+            alert('Please fill out all fields')
+        }
+        else {
+            axios.put(`${API_URL}/inventory/` + this.props.match.params.id, newItem)
+                .then(this.props.history.push('/inventory'))
+        }
     }
     // on change function for Name
     changeName = (e) => {
@@ -128,7 +132,7 @@ class EditInventoryItem extends React.Component {
                                     {console.log(this.state.stock)}
                                     < span className="status-options">
                                         <label className="stock-availability stock-availability--greyed">
-                                            <input type="radio" name="status" value="in-stock" className="stock-availability__radio-buttons" />
+                                            <input type="radio" name="status" value="in-stock" className="stock-availability__radio-buttons" checked />
                                             In stock
                                         </label>
                                     </span>
@@ -155,7 +159,7 @@ class EditInventoryItem extends React.Component {
                                     <span className="status-options">
                                         <label className="stock-availability stock-availability--greyed">
                                             <input type="radio" name="status" value="out-of-stock"
-                                                className="stock-availability__radio-buttons " aria-checked={true} />
+                                                className="stock-availability__radio-buttons " checked />
                                             Out of stock
                                         </label>
                                     </span>
