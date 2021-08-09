@@ -49,10 +49,7 @@ class Warehouses extends React.Component {
                         <Switch>
                             <Route path='/' exact>
                                 <WarehouseList warehouseList={this.state.warehouseList} deleteWindow={this.showModal} />
-                                <DeleteWarehouse show={this.state.show} cancel={this.onCancel} delete={this.onDelete} />
-
-
-
+                                {/* <DeleteWarehouse show={this.state.show} cancel={this.onCancel} delete={this.onDelete} /> */}
                             </Route>
                             {/* <Route path="/warehouses/edit/:id"
                                 render={(routerParams) => {
@@ -90,12 +87,16 @@ class Warehouses extends React.Component {
                             <Route path="/warehouses/delete/:id"
                                 render={(routerParams) => {
                                     return (
-                                        <DeleteWarehouse
-                                            {...routerParams}
-                                            warehouse={this.state.inventoryItems}
-                                            delete={this.onDelete}
-                                            cancel={this.onCancel}
-                                        />
+                                        <>
+                                            <WarehouseList warehouseList={this.state.warehouseList} deleteWindow={this.showModal} />
+                                            <DeleteWarehouse
+                                                {...routerParams}
+                                                show={this.state.show}
+                                                warehouse={this.state.inventoryItems}
+                                                delete={this.onDelete}
+                                                cancel={this.onCancel}
+                                            />
+                                        </>
                                     );
                                 }}>
                             </Route>

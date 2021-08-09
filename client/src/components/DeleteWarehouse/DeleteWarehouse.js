@@ -4,6 +4,7 @@ import closeImage from '../../assets/Icons/close-24px.svg'
 
 export default class DeleteWarehouse extends Component {
     render() {
+        console.log(this.props.show)
         if (!this.props.show) {
             return null
         }

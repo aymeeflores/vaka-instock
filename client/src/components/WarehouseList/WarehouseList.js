@@ -64,7 +64,7 @@ const WarehouseList = ({ warehouseList, deleteWindow }) => {
                                     </div>
                                 </div>
                                 <div className='w-list__icons'>
-                                    <Link><img src={trash} onClick={deleteWindow} />
+                                    <Link to={`/warehouses/delete/${data.id}`} > <img src={trash} onClick={deleteWindow} />
                                     </Link>
                                     <Link><img className='w-list__pen' src={pen} /></Link>
                                 </div>
