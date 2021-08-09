@@ -25,11 +25,12 @@ router.get("/:id", (req, res) => {
   res.send(singleItem);
 });
 
+// get inventory for a given warehouse
 router.get('/warehouse-inventory/:warehouseID', (req, res) => {
   const inventories = getInventoryData();
   const warehouseInventory = inventories.filter((item) => item.warehouseID === req.params.warehouseID)
   res.send(warehouseInventory);
-})
+});
 
 // post new inventory item
 router.post("/add/:id", (req, res) => {
@@ -49,6 +50,7 @@ router.post("/add/:id", (req, res) => {
   res.json(inventories);
 });
 
+//edit an item
 router.put('/:id',
 
   body('warehouseName').exists({checkFalsy: true}),
@@ -84,6 +86,17 @@ router.put('/:id',
     inventories[indexOfItem - 1] = updatedItem
     fs.writeFileSync("./data/inventories.json", JSON.stringify(inventories));
 
-  })
+  });
+
+//delete an item
+router.delete("/:id", (req, res) => {
+  const inventories = getInventoryData();
+  let itemIndex = inventories.findIndex(
+    (inventory) => inventory.id == req.params.id
+  );
+  inventories.splice(itemIndex, 1);
+  fs.writeFileSync("./data/inventories.json", JSON.stringify(inventories));
+  res.send(`${req.params.id} DELETED`);
+  });
 
 module.exports = router;
