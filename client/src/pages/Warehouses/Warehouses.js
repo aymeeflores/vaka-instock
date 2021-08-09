@@ -5,6 +5,7 @@ import WarehouseList from "../../components/WarehouseList/WarehouseList";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./Warehouses.scss";
 import DeleteWarehouse from "../../components/DeleteWarehouse/DeleteWarehouse";
+import AddNewWarehouse from "../../components/AddNewWarehouse/AddNewWarehouse";
 
 class Warehouses extends React.Component {
   state = {
