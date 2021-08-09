@@ -4,12 +4,25 @@
 
 
 .edit-inventory{
+    display: flex;
+    flex-wrap: wrap;
     margin: 0 1rem;
-    @include tablet{
-        margin: 0 2rem;
-    }
-    @include desktop{
-        margin: 0 2.5rem;
+    background-color: #fff;
+    width: calc(100% - 32px);
+    height: auto;
+    margin: auto;
+    border-radius: 3px;
+    position: relative;
+    top: -64px;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+    margin: 0 1rem;
+    @include tablet {
+        top: -94px;
+        width: calc(100% - 64px);
+        }
+    
+    @include desktop {
+        max-width: $desktop-width;
     }
     .inventory-header{
         display: flex;
@@ -17,10 +30,12 @@
         @include tablet{
             text-align: left;
             justify-content: flex-start;
+            margin: 0 2rem;
         }
         @include desktop{
             text-align: left;
             justify-content: flex-start;
+            margin: 0 2.5rem;
         }
     }
     .inventory-form{
