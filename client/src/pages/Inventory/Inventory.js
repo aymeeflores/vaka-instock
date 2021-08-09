@@ -66,7 +66,8 @@ class Inventory extends Component {
                 }}
               ></Route>
               <Route
-                path="/delete/:id"
+                path="/inventory/delete/:id"
+                exact
                 render={(routerParams) => {
                   return (
                     <DeleteInventory

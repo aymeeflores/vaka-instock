@@ -1,0 +1,21 @@
+@import "../../partials/breakpoints";
+@import "../../partials/reset";
+@import "../../partials/typography";
+@import "../../partials/variables";
+
+.delete-modal {
+  background-color: #fff;
+  border: 1px solid $cloud;
+  box-shadow: -2rem 2rem 2rem rgb(0 0 0 / 20%);
+  filter: blur(0);
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+  position: absolute;
+  top: -10.4%;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+}

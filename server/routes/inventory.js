@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const fs = require("fs");
 const uniqid = require("uniqid");
-const { body, validationResult } = require('express-validator');
+const { body, validationResult } = require("express-validator");
 
 // function to get inventory data from JSON file
 const getInventoryData = () => {
@@ -26,9 +26,11 @@ router.get("/:id", (req, res) => {
 });
 
 // get inventory for a given warehouse
-router.get('/warehouse-inventory/:warehouseID', (req, res) => {
+router.get("/warehouse-inventory/:warehouseID", (req, res) => {
   const inventories = getInventoryData();
-  const warehouseInventory = inventories.filter((item) => item.warehouseID === req.params.warehouseID)
+  const warehouseInventory = inventories.filter(
+    (item) => item.warehouseID === req.params.warehouseID
+  );
   res.send(warehouseInventory);
 });
 
@@ -51,20 +53,21 @@ router.post("/add/:id", (req, res) => {
 });
 
 //edit an item
-router.put('/:id',
+router.put(
+  "/:id",
 
-  body('warehouseName').exists({checkFalsy: true}),
-  body('itemName').exists({checkFalsy: true}),
-  body('description').exists({checkFalsy: true}),
-  body('category').exists({checkFalsy: true}),
-  body('status').exists({checkFalsy: true}),
+  body("warehouseName").exists({ checkFalsy: true }),
+  body("itemName").exists({ checkFalsy: true }),
+  body("description").exists({ checkFalsy: true }),
+  body("category").exists({ checkFalsy: true }),
+  body("status").exists({ checkFalsy: true }),
 
   (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ errors: errors.array() });
     }
-  
+
     let updatedItem = {
       id: req.params.id,
       warehouseID: req.body.warehouseID,
@@ -77,19 +80,19 @@ router.put('/:id',
     };
 
     let inventories = getInventoryData();
-    let itemId = updatedItem.id
-    res.send(updatedItem)
+    let itemId = updatedItem.id;
+    res.send(updatedItem);
     let indexOfItem = inventories.findIndex((inventory, index) => {
-        inventory.id == itemId
-        return index
-    })
-    inventories[indexOfItem - 1] = updatedItem
+      inventory.id == itemId;
+      return index;
+    });
+    inventories[indexOfItem - 1] = updatedItem;
     fs.writeFileSync("./data/inventories.json", JSON.stringify(inventories));
-
-  });
+  }
+);
 
 //delete an item
-router.delete("/:id", (req, res) => {
+router.delete("/delete/:id", (req, res) => {
   const inventories = getInventoryData();
   let itemIndex = inventories.findIndex(
     (inventory) => inventory.id == req.params.id
@@ -97,6 +100,6 @@ router.delete("/:id", (req, res) => {
   inventories.splice(itemIndex, 1);
   fs.writeFileSync("./data/inventories.json", JSON.stringify(inventories));
   res.send(`${req.params.id} DELETED`);
-  });
+});
 
 module.exports = router;
