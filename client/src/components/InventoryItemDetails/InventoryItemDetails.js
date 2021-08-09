@@ -1,3 +1,4 @@
+
 import React from 'react'
 import pen from "../../assets/Icons/edit-white.svg";
 import arrow from "../../assets/Icons/arrow_back-24px.svg";
@@ -85,4 +86,5 @@ class InventoryItemDetails extends React.Component {
     }
 }
 
-export default InventoryItemDetails
+
+export default InventoryItemDetails;

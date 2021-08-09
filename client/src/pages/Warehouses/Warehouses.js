@@ -4,8 +4,13 @@ import axios from "axios";
 import WarehouseList from "../../components/WarehouseList/WarehouseList";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./Warehouses.scss";
-import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
+
 import DeleteWarehouse from "../../components/DeleteWarehouse/DeleteWarehouse";
+import AddNewWarehouse from "../../components/AddNewWarehouse/AddNewWarehouse";
+
+import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
+
+
 
 class Warehouses extends React.Component {
   state = {
@@ -62,6 +67,7 @@ class Warehouses extends React.Component {
                                 );
                                 }}>
                             </Route> */}
+
               <Route
                 path="/warehouses/details/:id"
                 render={(routerParams) => {
@@ -74,24 +80,30 @@ class Warehouses extends React.Component {
                   );
                 }}
               ></Route>
-              {/* <Route path="/warehouses/add/:id"
-                                render={(routerParams) => {
-                                    return (
-                                 change the component to whatever your components called
-                                        <AddWarehouse
-                                        {...routerParams}
-                                        warehouse={this.state.inventoryItems}
-                                      />
-                                );
-                                }}>
-                            </Route> */}
+            
               <Route
+
+                path="/warehouses/add"
+                exact
+                render={(routerParams) => {
+                  return (
+                    <AddNewWarehouse
+                      {...routerParams}
+                      warehouse={this.state.warehouseList}
+                    />
+                  );
+                }}
+              ></Route>
+              <Route
+
                 path="/warehouses/delete/:id"
                 render={(routerParams) => {
                   return (
                     <DeleteWarehouse
                       {...routerParams}
-                      warehouse={this.state.inventoryItems}
+
+                      warehouseList={this.state.inventoryItems}
+
                     />
                   );
                 }}

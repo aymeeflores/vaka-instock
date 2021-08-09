@@ -3,7 +3,9 @@ const router = express.Router();
 const fs = require("fs");
 const path = require("path");
 const uniqId = require("uniqid");
-const { body, validationResult } = require('express-validator');
+const { body, validationResult } = require("express-validator");
+
+
 
 
 currentdir = __dirname;
@@ -12,17 +14,19 @@ const warehouses = JSON.parse(
 );
 
 const getWarehouseData = () => {
-    const warehouseData = fs.readFileSync("./data/warehouses.json");
-    const parsedWarehouseData = JSON.parse(warehouseData);
-    return parsedWarehouseData;
-  };
+  const warehouseData = fs.readFileSync("./data/warehouses.json");
+  const parsedWarehouseData = JSON.parse(warehouseData);
+  return parsedWarehouseData;
+};
 
   //get list of warehouses
 router.get("/", (req, res) => {
   res.send(warehouses);
+
 });
 
 // get single warehouse details
+
 router.get("/:id", (req, res) => {
   const singleWarehouse = warehouses.find((item) => item.id === req.params.id);
   res.send(singleWarehouse);
@@ -49,13 +53,16 @@ router.put("/:id", (req, res) => {
     warehouse.id == warehouseId;
     return index;
   });
+
   warehouses[indexOfWarehouse - 1 ] = updatedInfo;
+
   console.log(warehouses);
   fs.writeFileSync(
     path.resolve(currentdir, "../data/warehouses.json"),
     JSON.stringify(warehouses)
   );
 });
+
 
 // delete a warehouse (and it's inventory)
 router.delete("/:id", (req, res) => {
@@ -108,39 +115,42 @@ router.delete("/:id", (req, res) => {
 // add a new warehouse
 router.post("/", 
     
-    body('name').exists({checkFalsy: true}),
-    body('address').exists({checkFalsy: true}),
-    body('city').exists({checkFalsy: true}),
-    body('country').exists({checkFalsy: true}),
-    body('contact.name').exists({checkFalsy: true}),
-    body('contact.position').exists({checkFalsy: true}),
-    body('contact.email').isEmail(), 
-    body('contact.phone').isMobilePhone(), 
 
 
-    (req, res) => {
+  body("name").exists({ checkFalsy: true }),
+  body("address").exists({ checkFalsy: true }),
+  body("city").exists({ checkFalsy: true }),
+  body("country").exists({ checkFalsy: true }),
+  body("contact.name").exists({ checkFalsy: true }),
+  body("contact.position").exists({ checkFalsy: true }),
+  body("contact.email").isEmail(),
+  body("contact.phone").isMobilePhone(),
+
+  (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ errors: errors.array() });
     }
     const warehouses = getWarehouseData();
     let newWarehouse = {
-        id: uniqId(),
-        name: req.body.name,
-        address: req.body.address,
-        city: req.body.city,
-        country: req.body.country,
-        contact: {
-            name: req.body.contact.name,
-            position: req.body.contact.position,
-            phone: req.body.contact.phone,
-            email: req.body.contact.email
-        }
-    }
+      id: uniqId(),
+      name: req.body.name,
+      address: req.body.address,
+      city: req.body.city,
+      country: req.body.country,
+      contact: {
+        name: req.body.contact.name,
+        position: req.body.contact.position,
+        phone: req.body.contact.phone,
+        email: req.body.contact.email,
+      },
+    };
     warehouses.push(newWarehouse);
     fs.writeFileSync("./data/warehouses.json", JSON.stringify(warehouses));
     res.send(warehouses);
-})
+    console.log(req.body.contact.name);
+  }
+);
 
 
 module.exports = router;
