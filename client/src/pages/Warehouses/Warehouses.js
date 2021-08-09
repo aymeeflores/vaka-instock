@@ -16,16 +16,7 @@ class Warehouses extends React.Component {
       show: true
     })
   }
-  onDelete = (e) => {
-    this.setState({
-      show: false
-    })
-  }
-  onCancel = (e) => {
-    this.setState({
-      show: false
-    })
-  }
+
   componentDidMount() {
     axios.get(`${API_URL}/warehouses`)
       .then((response) => {
@@ -91,9 +82,7 @@ class Warehouses extends React.Component {
                       <DeleteWarehouse
                         {...routerParams}
                         show={this.state.show}
-                        warehouse={this.state.inventoryItems}
-                        delete={this.onDelete}
-                        cancel={this.onCancel}
+                        warehouseList={this.state.warehouseList}
                       />
                     </>
                   );
