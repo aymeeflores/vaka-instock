@@ -27,6 +27,7 @@
     .inventory-header{
         display: flex;
         justify-content: center;
+        align-items: center;
         @include tablet{
             text-align: left;
             justify-content: flex-start;
@@ -36,6 +37,13 @@
             text-align: left;
             justify-content: flex-start;
             margin: 0 2.5rem;
+        }
+        .arrow{
+            margin-top: 1rem;
+            margin-left: 1.75rem;
+        }
+        &__title{
+            margin: 2rem 3.5rem 1.5rem 0;
         }
     }
     .inventory-form{
@@ -48,8 +56,6 @@
             display: flex;
             display: flex;
             flex-wrap: wrap;
-        }
-        .item-header{
         }
         .item-information{
             width: 100%;
@@ -68,11 +74,11 @@
             }
             &__header{
                 flex-basis: 100%;
-                margin-bottom: 1rem;
+                margin: 1rem 0 1rem 1.5rem;
             }
             &__title{
             flex-basis: 100%;
-            margin-top: 1rem;
+            margin: 1rem 0 0.25rem 1.5rem ;
             @include mobile-labels;
                 .status{
                     display: block;
@@ -85,12 +91,27 @@
                             display: inline;
                         }
                     }
+                    .stock-availability--greyed{
+                        color: #5C667E;
+                    }
+                }
+                .quantity{
+                    .number-of-item{
+                        &__input{
+                            display: block;
+                            width: 90%;
+                            border: 1px solid #BDC5D5;
+                            box-sizing: border-box;
+                            border-radius: 20px;
+                            height: 2rem;
+                        }
+                    }
                 }
 
             }
             &__input{
                 display: block;
-                width: 100%;
+                width: 90%;
                 border: 1px solid #BDC5D5;
                 box-sizing: border-box;
                 border-radius: 20px;
@@ -104,7 +125,6 @@
         }
         .item-information:nth-child(2){
             margin-top: 1rem;
-            border-bottom: 1px solid variables.$cloud;
             @include tablet{
                 margin-top: 0;
                 padding-right: 0;
@@ -125,7 +145,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin: 2rem 0;
+        margin: 2rem 1.5rem;
         @include tablet{
             width: 100%;
             justify-content: flex-end;
@@ -134,7 +154,13 @@
             width: 100%;
             justify-content: flex-end;
         }
-        &__button{
+        .buttonLinkTag{
+            width: 45%;
+            .linkChild-button{
+                width: 100%;
+            }
+        }
+        .button{
             border-radius: 1.25rem;
             border: none;
             height: 2.25rem;
