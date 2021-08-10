@@ -8,6 +8,7 @@ import './Warehouses.scss'
 import DeleteWarehouse from '../../components/DeleteWarehouse/DeleteWarehouse';
 import WarehouseDetails from '../../components/WarehouseDetails/WarehouseDetails';
 import AddNewWarehouse from '../../components/AddNewWarehouse/AddNewWarehouse';
+import EditWarehouse from '../../components/EditWarehouse/EditWarehouse';
 
 class Warehouses extends React.Component {
   state = {
@@ -56,17 +57,17 @@ class Warehouses extends React.Component {
                   deleteWindow={this.showModal}
                 />
               </Route>
-              {/* <Route path="/warehouses/edit/:id"
+              <Route path="/warehouses/edit/:id"
                                 render={(routerParams) => {
                                     return (
-                                 change the component to whatever your components called
+                                 
                                         <EditWarehouse
                                         {...routerParams}
                                         warehouse={this.state.inventoryItems}
                                       />
                                 );
                                 }}>
-                            </Route> */}
+                            </Route>
               <Route
                 path="/warehouses/details/:id"
                 render={(routerParams) => {

@@ -100,9 +100,9 @@ const WarehouseList = ({ warehouseList, deleteWindow }) => {
                 <Link to={`/warehouses/delete/${data.id}`}>
                   <img src={trash} onClick={deleteWindow} />
                 </Link>
-                <Link>
-                  <img className="w-list__pen" src={pen} />
-                </Link>
+                
+                <Link to={`/warehouses/edit/${data.id}`}><img className="w-list__pen" src={pen} /></Link>
+                
               </div>
             </div>
           );
