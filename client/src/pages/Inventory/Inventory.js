@@ -7,11 +7,17 @@ import EditInventoryItem from "../../components/EditInventoryItem/EditInventoryI
 import InventoryItemDetails from "../../components/InventoryItemDetails/InventoryItemDetails";
 import AddNewInventoryItem from "../../components/AddNewInventoryItem/AddNewInventoryItem";
 import DeleteInventory from "../../components/DeleteInventory/DeleteInventory";
-
 class Inventory extends Component {
   state = {
     inventoryItems: [],
-    itemId: null,
+    // itemId: null,
+    show: false,
+  };
+
+  showModal = () => {
+    this.setState({
+      show: true,
+    });
   };
 
   componentDidMount() {
@@ -22,7 +28,6 @@ class Inventory extends Component {
       })
       .catch((error) => console.log(error));
   }
-
   render() {
     return (
       <section className="inventory">
@@ -67,13 +72,19 @@ class Inventory extends Component {
               ></Route>
               <Route
                 path="/inventory/delete/:id"
-                exact
                 render={(routerParams) => {
                   return (
-                    <DeleteInventory
-                      {...routerParams}
-                      inventoryItems={this.state.inventoryItems}
-                    />
+                    <>
+                      <InventoryList
+                        inventoryItems={this.state.inventoryItems}
+                        deleteWindow={this.showModal}
+                      />
+                      <DeleteInventory
+                        {...routerParams}
+                        inventoryItems={this.state.inventoryItems}
+                        show={this.state.show}
+                      />
+                    </>
                   );
                 }}
               ></Route>
@@ -84,5 +95,4 @@ class Inventory extends Component {
     );
   }
 }
-
 export default Inventory;
