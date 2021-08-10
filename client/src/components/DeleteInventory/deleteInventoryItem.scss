@@ -1,0 +1,107 @@
+@import "../../partials/breakpoints";
+@import "../../partials/reset";
+@import "../../partials/typography";
+@import "../../partials/variables";
+
+.delete-modal {
+  background: white;
+  // border: 1px solid #ccc;
+  // box-shadow: -2rem 2rem 2rem rgb(0 0 0 / 20%);
+  // filter: blur(0);
+  // transform: scale(1);
+  // opacity: 1;
+  visibility: visible;
+  position: absolute;
+  top: -217px;
+  width: 100vw;
+  height: 100vh;
+
+  padding: 1rem;
+
+  @include tablet {
+    padding: 1.31rem;
+    background: rgba(19, 24, 44, 0.7);
+    top: -203px;
+  }
+
+  .modal-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    @include tablet {
+      width: calc(100% - 96px);
+      background-color: #fff;
+      margin: 185px auto auto auto;
+      height: unset;
+      padding: 21px;
+    }
+
+    @include desktop {
+      width: $desktop-width;
+    }
+  }
+  .modal-exit {
+    position: relative;
+    left: calc(100% - 1.3125rem);
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+  .modal-header {
+    margin-top: 1.5625rem;
+    margin-bottom: 1rem;
+    @include mobile-header;
+
+    @include tablet {
+      @include desk-header;
+      padding: 0 64px;
+    }
+  }
+  .modal-message {
+    @include body-large;
+
+    @include tablet {
+      @include desk-bodylarge;
+      padding: 16px 64px 32px 64px;
+    }
+  }
+  .modal-buttons {
+    display: flex;
+    justify-content: space-between;
+
+    @include tablet {
+      padding: 24px 64px;
+    }
+
+    &__link {
+      text-decoration: none;
+    }
+    &__cancel {
+      @include btn;
+      @include mobile-labels;
+      background-color: #fff;
+      width: 50%;
+      margin-right: 16px;
+      color: $slate;
+      border: 1px solid $cloud;
+
+      @include tablet {
+        @include desk-labels;
+        width: auto;
+      }
+    }
+    &__delete {
+      @include btn;
+      @include mobile-labels;
+      width: 50%;
+      border: none;
+      color: #fff;
+      background-color: #c94515;
+
+      @include tablet {
+        @include desk-labels;
+        width: auto;
+      }
+    }
+  }
+}

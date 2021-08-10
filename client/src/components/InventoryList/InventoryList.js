@@ -7,7 +7,7 @@ import itemIcon from "../../assets/Icons/chevron_right-24px.svg";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import editIcon from "../../assets/Icons/edit-24px.svg";
 
-const InventoryList = ({ inventoryItems }) => {
+const InventoryList = ({ inventoryItems, deleteWindow }) => {
   return (
     <>
       {inventoryItems && (
@@ -165,6 +165,7 @@ const InventoryList = ({ inventoryItems }) => {
                           className="inventory__delete-icon"
                           src={deleteIcon}
                           alt="delete icon"
+                          onClick={deleteWindow}
                         />
                       </Link>
                       <Link to={`/inventory/edit/${data.id}`}>
