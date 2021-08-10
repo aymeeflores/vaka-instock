@@ -6,6 +6,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './Warehouses.scss'
 import DeleteWarehouse from '../../components/DeleteWarehouse/DeleteWarehouse';
 import WarehouseDetails from '../../components/WarehouseDetails/WarehouseDetails';
+import AddNewWarehouse from '../../components/AddNewWarehouse/AddNewWarehouse';
 class Warehouses extends React.Component {
   state = {
     warehouseList: [],
@@ -62,18 +63,18 @@ class Warehouses extends React.Component {
                   );
                 }}
               ></Route>
-              {/* <Route
-                                path="/warehouses/add"
-                                exact
-                                render={(routerParams) => {
-                                    return (
-                                        <AddNewWarehouse
-                                            {...routerParams}
-                                            warehouse={this.state.warehouseList}
-                                        />
-                                    );
-                                }}
-                            ></Route> */}
+              <Route
+                path="/warehouses/add"
+                exact
+                render={(routerParams) => {
+                  return (
+                    <AddNewWarehouse
+                      {...routerParams}
+                      warehouse={this.state.warehouseList}
+                    />
+                  );
+                }}
+              ></Route>
               <Route path="/warehouses/delete/:id"
                 render={(routerParams) => {
                   return (
