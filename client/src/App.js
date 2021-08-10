@@ -1,6 +1,6 @@
 import "./App.scss";
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Warehouses from "./pages/Warehouses/Warehouses";
 import Footer from "./components/Footer/Footer";
@@ -14,12 +14,9 @@ class App extends React.Component {
         <BrowserRouter>
           <Header />
           <Switch>
-            <Route path="/" exact>
-              <Warehouses />
-            </Route>
-            <Route path="/inventory">
-              <Inventory />
-            </Route>
+            <Route path="/warehouses" component={Warehouses} />
+            <Route path="/inventory" component={Inventory} />
+            <Redirect from="/" to="/warehouses" exact></Redirect>
           </Switch>
           <Footer />
         </BrowserRouter>
