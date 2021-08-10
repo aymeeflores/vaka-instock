@@ -27,7 +27,7 @@ class EditInventoryItem extends React.Component {
     itemId = this.props.match.params.id
     // Details about that item
     itemDetails = this.inventoryList.filter((item) => {
-        return item.id == this.itemId
+        return item.id === this.itemId
     })[0]
     // on Submit function to edit object
     onSubmit = (event) => {
@@ -43,6 +43,9 @@ class EditInventoryItem extends React.Component {
         }
         if ((!newItem.itemName) || (!newItem.description)) {
             alert('Please fill out all fields')
+        }
+        if ((!newItem.quantity) || (typeof (newItem.quantity) != "number")) {
+            alert('Please enter a valid quantity. Note quantity field cannot be blank and must be a number')
         }
         else {
             axios.put(`${API_URL}/inventory/` + this.props.match.params.id, newItem)
@@ -63,6 +66,12 @@ class EditInventoryItem extends React.Component {
         })
     }
 
+    changeQuantity = (e) => {
+        this.setState({
+            quantity: e.value
+        })
+    }
+
     // Mounting component to allow for assigning of categories and stock values in state
     componentDidMount() {
         axios.get(`${API_URL}/warehouses`)
@@ -75,7 +84,7 @@ class EditInventoryItem extends React.Component {
             })
             .then(this.setState({
                 categories: (this.itemDetails.categories),
-                stock: (this.itemDetails.status == "In Stock"),
+                stock: (this.itemDetails.status === "In Stock"),
                 itemName: (this.itemDetails.itemName),
                 itemDescription: (this.itemDetails.description),
                 quantity: (this.itemDetails.quantity)
@@ -83,12 +92,14 @@ class EditInventoryItem extends React.Component {
     }
 
     render() {
-        console.log(this.state)
+        console.log(this.itemDetails)
         return (
             <div className="edit-inventory">
                 <div className="inventory-header">
-                    <img src={arrow} />
-                    <h1>Edit Inventory Item</h1>
+                    <Link to="/inventory" className="back-tag">
+                        <img src={arrow} alt="arrow" className="arrow" />
+                    </Link>
+                    <h1 className="inventory-header__title">Edit Inventory Item</h1>
                 </div>
                 <form className="inventory-form" onSubmit={this.onSubmit}>
                     <div className="item-information">
@@ -110,7 +121,7 @@ class EditInventoryItem extends React.Component {
                             <select className="item-information__input item-information__input--regular" name="itemCategory">
                                 {/* THIS IS WHERE ITEM CATEGORY GOES */}
                                 {this.categories.map((category) => {
-                                    if (category == this.state.categories) {
+                                    if (category === this.state.categories) {
                                         return (<option value={this.state.categories} selected="selected">{this.state.categories}</option>)
                                     }
                                     else {
@@ -131,7 +142,7 @@ class EditInventoryItem extends React.Component {
                                 <>
                                     {console.log(this.state.stock)}
                                     < span className="status-options">
-                                        <label className="stock-availability stock-availability--greyed">
+                                        <label className="stock-availability">
                                             <input type="radio" name="status" value="in-stock" className="stock-availability__radio-buttons" checked />
                                             In stock
                                         </label>
@@ -145,6 +156,13 @@ class EditInventoryItem extends React.Component {
                                             Out of stock
                                         </label>
                                     </span>
+                                    <div className="quantity">
+                                        <label className="number-of-item">
+                                            Quantity
+                                            <input type="text" name="itemName"
+                                                className="number-of-item__input" value={this.state.quantity} onChange={this.changeQuantity} />
+                                        </label>
+                                    </div>
                                 </>) :
                                 // This is if its out of stock
                                 (<>
@@ -157,7 +175,7 @@ class EditInventoryItem extends React.Component {
                                     </span>
                                     {/* Out of Stock Option */}
                                     <span className="status-options">
-                                        <label className="stock-availability stock-availability--greyed">
+                                        <label className="stock-availability ">
                                             <input type="radio" name="status" value="out-of-stock"
                                                 className="stock-availability__radio-buttons " checked />
                                             Out of stock
@@ -173,7 +191,7 @@ class EditInventoryItem extends React.Component {
                             {/* THIS IS WHERE ITEM WAREHOUSE GOES  */}
                             <select className="item-information__input item-information__input--regular" name="warehouseLocations">
                                 {this.state.warehouseList.map((warehouse) => {
-                                    if (warehouse == this.itemDetails.warehouseName) {
+                                    if (warehouse === this.itemDetails.warehouseName) {
                                         return (
                                             <option value={warehouse} selected="selected">{warehouse}</option>
                                         )
@@ -189,8 +207,10 @@ class EditInventoryItem extends React.Component {
 
                     </div>
                     <div className="submitting">
-                        <button className="submitting__button">Cancel</button>
-                        <button className="submitting__button submitting__button--blueBackground">Save</button>
+                        <Link to="/inventory" className="buttonLinkTag">
+                            <button className="submitting__button button linkChild-button">Cancel</button>
+                        </Link>
+                        <button className="button submitting__button--blueBackground">Save</button>
                     </div>
                 </form>
             </div >

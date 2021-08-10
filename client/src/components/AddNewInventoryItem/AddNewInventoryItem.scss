@@ -17,13 +17,11 @@
     box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
     margin: 0 1rem;
     @include tablet {
-        justify-content: center;
         top: -94px;
         width: calc(100% - 64px);
         }
     
     @include desktop {
-        justify-content: center;
         max-width: $desktop-width;
     }
     .inventory-header{
@@ -158,12 +156,6 @@
         }
         .buttonLinkTag{
             width: 45%;
-            @include tablet{
-                width: auto;
-            }
-            @include desktop{
-                width: auto;
-            }
             .linkChild-button{
                 width: 100%;
             }
