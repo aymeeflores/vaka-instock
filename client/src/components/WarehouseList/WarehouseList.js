@@ -7,7 +7,9 @@ import chevron from "../../assets/Icons/chevron_right-24px.svg";
 import sort from "../../assets/Icons/sort-24px.svg";
 import "./WarehouseList.scss";
 
-const WarehouseList = ({ warehouseList }) => {
+const WarehouseList = ({ warehouseList, deleteWindow }) => {
+  console.log(deleteWindow);
+  console.log(warehouseList);
   return (
     <main className="w-list">
       <div className="w-list__top">
@@ -23,7 +25,6 @@ const WarehouseList = ({ warehouseList }) => {
 
           <img src={search} className="w-list__search-img" alt="search icon" />
           <Link to="/warehouses/add">
-
             <input
               className="w-list__add"
               type="submit"
@@ -43,7 +44,6 @@ const WarehouseList = ({ warehouseList }) => {
         <div className="w-list__subheading--flex">
           <h4 className="w-list__subheading-2">ADDRESS</h4>
           <img className="w-list__sort" src={sort} alt="sort icon" />
-
         </div>
         <div className="w-list__subheading--flex">
           <h4 className="w-list__subheading-2 w-list__subheading-2--spacing">
@@ -55,29 +55,28 @@ const WarehouseList = ({ warehouseList }) => {
         <div className="w-list__subheading--flex">
           <h4 className="w-list__subheading-2">CONTACT INFORMATION</h4>
           <img className="w-list__sort" src={sort} alt="sort icon" />
-
         </div>
         <h4 className="w-list__subheading-2">ACTIONS</h4>
       </div>
       <div>
-
         {warehouseList.map((data, idx) => {
           return (
             <div className="w-list__container" key={idx}>
-
               <div className="w-list__left">
                 <h4 className="w-list__subheading">WAREHOUSE</h4>
                 {/* This needs to be linked to whatever the individual warehouse details path will be */}
                 <div className="w-list__name-box">
-
                   <Link
                     to={"/warehouses/details/" + data.id}
                     className="w-list__name"
                   >
                     <p>{data.name}</p>
                   </Link>
-                  <img className="w-list__chev" src={chevron} alt="chevron icon" />
-
+                  <img
+                    className="w-list__chev"
+                    src={chevron}
+                    alt="chevron icon"
+                  />
                 </div>
                 <h4 className="w-list__subheading w-list__subheading--lower">
                   ADDRESS
@@ -98,13 +97,11 @@ const WarehouseList = ({ warehouseList }) => {
                 </div>
               </div>
               <div className="w-list__icons">
-
-                <Link>
-                  <img src={trash} alt="delete icon" />
+                <Link to={`/warehouses/delete/${data.id}`}>
+                  <img src={trash} onClick={deleteWindow} />
                 </Link>
                 <Link>
-                  <img className="w-list__pen" src={pen} alt="edit icon" />
-
+                  <img className="w-list__pen" src={pen} />
                 </Link>
               </div>
             </div>
