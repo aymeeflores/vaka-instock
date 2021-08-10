@@ -92,7 +92,7 @@ class EditInventoryItem extends React.Component {
     }
 
     render() {
-        console.log(this.state)
+        console.log(this.itemDetails)
         return (
             <div className="edit-inventory">
                 <div className="inventory-header">
