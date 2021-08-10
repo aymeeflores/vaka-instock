@@ -94,7 +94,6 @@ const InventoryList = ({ inventoryItems, deleteWindow }) => {
           </article>
           {/* inventory list */}
           <ul className="inventory__list">
-            {console.log(inventoryItems)}
             {inventoryItems
               .filter(
                 (invItem) => invItem.warehouseID !== inventoryItems.warehouseID
@@ -135,7 +134,16 @@ const InventoryList = ({ inventoryItems, deleteWindow }) => {
                         <article className="inventory__status-wrapper">
                           <p className="inventory__mobile-lable">Status</p>
                           <article className="inventory__status-bg">
-                            <p className="inventory__status">{data.status}</p>
+                            <p
+                              className={
+                                "inventory__status " +
+                                (data.status === "Out of Stock"
+                                  ? "inventory__status--outofstock"
+                                  : "")
+                              }
+                            >
+                              {data.status}
+                            </p>
                           </article>
                         </article>
                         {/* qty */}
@@ -168,7 +176,10 @@ const InventoryList = ({ inventoryItems, deleteWindow }) => {
                           onClick={deleteWindow}
                         />
                       </Link>
-                      <Link to={`/inventory/edit/${data.id}`}>
+                      <Link
+                        lassName="inventory__edit-icon"
+                        to={`/inventory/edit/${data.id}`}
+                      >
                         <img src={editIcon} alt="edit icon" />
                       </Link>
                     </article>
