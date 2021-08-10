@@ -26,23 +26,29 @@ export default class DeleteWarehouse extends Component {
             return null
         }
         return (
-            <div className="delete-modal">
-                <div className="modal-exit">
-                    <img src={closeImage} />
-                </div>
-                <div className="modal-header">
-                    <h1 className="modal-header__text">{`Delete ${this.warehouseInfo.name}  warehouse`}</h1>
-                </div>
-                <div className="modal-message">
-                    <p className="modal-message__text">{`Please confirm that you’d like to delete ${this.warehouseInfo.name} from the list of warehouses. You won’t be able to undo this action.`} </p>
-                </div>
-                <div className="modal-buttons">
-                    <Link to="/" className="link-tag">
-                        <button className="link-tag__button" >Cancel</button>
-                    </Link>
-                    <Link to="/" className="link-tag">
-                        <button className="link-tag__button link-tag__button--red" onClick={this.onDelete} >Delete</button>
-                    </Link>
+            <div className="delete-modal-box">
+                <div className="modal-wrap">
+                    <div className="modal-contents">
+                        <div className="modal-close">
+                            <Link className="modal-button__link" to="/">
+                                <img src={closeImage} />
+                            </Link>
+                        </div>
+                        <div className="modal-heading">
+                            <h1 className="modal-heading__text">{`Delete ${this.warehouseInfo.name}  warehouse`}</h1>
+                        </div>
+                        <div className="modal-message">
+                            <p className="modal-message__text">{`Please confirm that you’d like to delete ${this.warehouseInfo.name} from the list of warehouses. You won’t be able to undo this action.`} </p>
+                        </div>
+                    </div>
+                    <div className="modal-button">
+                        <Link to="/" className="modal-button__link">
+                            <button className="modal-button__cancel">Cancel</button>
+                        </Link>
+                        <Link to="/" className="modal-button__link">
+                            <button className="modal-button__delete modal-button__delete--red" onClick={this.onDelete}>Delete</button>
+                        </Link>
+                    </div>
                 </div>
             </div>
         )

@@ -1,59 +1,113 @@
-@use '../../partials/variables' as *;
-@use '../../partials/typography' as *;
-@use '../../partials/breakpoints' as *;
+@import "../../partials/breakpoints";
+@import "../../partials/reset";
+@import "../../partials/typography";
+@import "../../partials/variables";
 
-.delete-modal {
-    background: white;
-    border: 1px solid #ccc;
-    box-shadow: -2rem 2rem 2rem rgb(0 0 0 / 20%);
-    filter: blur(0);
-    transform: scale(1);
-    opacity: 1;
-    visibility: visible;
-    position: absolute;
-    top: -10.4%;
-    width: 100vw;
-    height: 100vh;
+.delete-modal-box {
+  background: white;
+  // border: 1px solid #ccc;
+  // box-shadow: -2rem 2rem 2rem rgb(0 0 0 / 20%);
+  // filter: blur(0);
+  // transform: scale(1);
+  // opacity: 1;
+  visibility: visible;
+  position: absolute;
+  top: -217px;
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem;
+
+  @include tablet {
+    padding: 1.31rem;
+    background: rgba(19, 24, 44, 0.7);
+    top: -203px;
+  }
+
+  .modal-wrap {
     display: flex;
     flex-direction: column;
-    padding: 0 1rem;
-    .modal-exit{
-        align-self: flex-end;
-        width: 0.875rem;
-        height: 0.875rem;
-        margin: 1.3125rem 1.3125rem 0 0;
+    justify-content: space-between;
+    height: 100%;
+    @include tablet {
+      width: calc(100% - 96px);
+      background-color: #fff;
+      margin: 185px auto auto auto;
+      height: unset;
+      padding: 21px;
     }
-    .modal-header{
-        margin-top: 1.5625rem;
-        margin-bottom: 1rem;
-        @include mobile-header;
+
+    @include desktop {
+      width: $desktop-width;
     }
-    .modal-message{
-        @include body-large;
+  }
+  .modal-close {
+    position: relative;
+    left: calc(100% - 1.3125rem);
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+  .modal-heading {
+    margin-top: 1.5625rem;
+    margin-bottom: 1rem;
+    @include mobile-header;
+
+    @include tablet {
+      @include desk-header;
+      padding: 0 64px;
     }
-    .modal-buttons{
-        .link-tag{
-            &__button{
-                border-radius: 1.25rem;
-                border: none;
-                height: 2.25rem;
-                padding: 0 1rem;
-                width: 45%;
-                color: black;
-                @include tablet{
-                    height: 2.375rem;
-                    width: auto;
-                }
-                @include desktop{
-                    height: 2.375rem;
-                    width: auto;
-                }
-            }
-            &__button--red{
-                background: #C94515;
-                color: white;
-            }
-        }
+  }
+  .modal-message {
+    @include body-large;
+
+    @include tablet {
+      @include desk-bodylarge;
+      padding: 16px 64px 32px 64px;
     }
-    
+  }
+  .modal-button {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    @include tablet {
+      padding: 24px 64px;
+      justify-content: flex-end;
+    }
+    &__link {
+      text-decoration: none;
+      width: 100%;
+      @include tablet{
+          width: auto
+      }
+      @include desktop{
+          width: auto;
+      }
+    }
+    &__cancel {
+      @include btn;
+      @include mobile-labels;
+      background-color: #fff;
+      margin-right: 16px;
+      color: $slate;
+      border: 1px solid $cloud;
+      width: 90%;
+
+      @include tablet {
+        @include desk-labels;
+        width: auto;
+      }
+    }
+    &__delete {
+      @include btn;
+      @include mobile-labels;
+      border: none;
+      color: #fff;
+      background-color: #c94515;
+      width: 90%;
+
+      @include tablet {
+        @include desk-labels;
+        width: auto;
+      }
+    }
+  }
 }
