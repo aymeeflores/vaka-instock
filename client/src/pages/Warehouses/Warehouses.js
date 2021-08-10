@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { API_URL } from '../../util'
 import axios from "axios"
@@ -8,22 +9,33 @@ import DeleteWarehouse from '../../components/DeleteWarehouse/DeleteWarehouse';
 import WarehouseDetails from '../../components/WarehouseDetails/WarehouseDetails';
 import AddNewWarehouse from '../../components/AddNewWarehouse/AddNewWarehouse';
 import EditWarehouse from '../../components/EditWarehouse/EditWarehouse';
+
 class Warehouses extends React.Component {
   state = {
     warehouseList: [],
-    show: false
+    show: false,
   };
   showModal = () => {
     this.setState({
-      show: true
-    })
-  }
-
+      show: true,
+    });
+  };
+  onDelete = (e) => {
+    this.setState({
+      show: false,
+    });
+  };
+  onCancel = (e) => {
+    this.setState({
+      show: false,
+    });
+  };
   componentDidMount() {
-    axios.get(`${API_URL}/warehouses`)
+    axios
+      .get(`${API_URL}/warehouses`)
       .then((response) => {
         this.setState({
-          warehouseList: response.data
+          warehouseList: response.data,
         });
       })
       .catch((error) => {
@@ -31,15 +43,19 @@ class Warehouses extends React.Component {
       });
   }
   render() {
-    { console.log(this.state) }
+    {
+      console.log(this.state);
+    }
     return (
-      <div className='warehouses'>
+      <div className="warehouses">
         {this.state.warehouseList && (
           <BrowserRouter>
             <Switch>
-              <Route path='/' exact>
-                <WarehouseList warehouseList={this.state.warehouseList} deleteWindow={this.showModal} />
-
+              <Route path="/warehouses" exact>
+                <WarehouseList
+                  warehouseList={this.state.warehouseList}
+                  deleteWindow={this.showModal}
+                />
               </Route>
               <Route path="/warehouses/edit/:id"
                                 render={(routerParams) => {
@@ -64,6 +80,7 @@ class Warehouses extends React.Component {
                   );
                 }}
               ></Route>
+
               <Route
                 path="/warehouses/add"
                 exact
@@ -80,7 +97,10 @@ class Warehouses extends React.Component {
                 render={(routerParams) => {
                   return (
                     <>
-                      <WarehouseList warehouseList={this.state.warehouseList} deleteWindow={this.showModal} />
+                      <WarehouseList
+                        warehouseList={this.state.warehouseList}
+                        deleteWindow={this.showModal}
+                      />
                       <DeleteWarehouse
                         {...routerParams}
                         show={this.state.show}
@@ -88,10 +108,11 @@ class Warehouses extends React.Component {
                       />
                     </>
                   );
-                }}>
-              </Route>
+                }}
+              ></Route>
             </Switch>
-          </BrowserRouter>)}
+          </BrowserRouter>
+        )}
       </div>
     );
   }
