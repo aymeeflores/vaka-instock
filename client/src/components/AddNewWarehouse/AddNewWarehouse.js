@@ -4,14 +4,14 @@ import arrow from "../../assets/Icons/arrow_back-24px.svg";
 import axios from "axios";
 
 const AddNewWarehouse = () => {
-  const createWarehouse = (obj) => {
-    axios.post("http://localhost:8080/warehouses/", obj);
-  };
+  // const createWarehouse = (obj) => {
+  //   axios.post("http://localhost:8080/warehouses/", obj);
+  // };
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(e.target);
-
+    // console.log(e.target);
+    console.log(e.target.phone.value)
     const newWarehouse = {
       name: e.target.warehouse.value,
       address: e.target.address.value,
@@ -24,7 +24,33 @@ const AddNewWarehouse = () => {
         email: e.target.email.value,
       },
     };
-    createWarehouse(newWarehouse);
+    if (!newWarehouse.name) {
+      alert("Please enter a valid name")
+    }
+    else if (!newWarehouse.address) {
+      alert("Please enter a valid address")
+    }
+    else if (!newWarehouse.city) {
+      alert("Please enter a valid city")
+    }
+    else if (!newWarehouse.country) {
+      alert("Please enter a valid country")
+    }
+    else if (!newWarehouse.contact.name) {
+      alert("Please enter a valid name")
+    }
+    else if (!newWarehouse.contact.position) {
+      alert("Please enter a valid position")
+    }
+    else if (typeof (parseInt((newWarehouse.contact.phone).replace("+", "").replace("-", "").replace("(", "").replace(")", "").replaceAll(" ", ""))) !== "number") {
+      alert("Please enter a valid phone number! ")
+    }
+    else if (!newWarehouse.contact.email.includes("@") || (!newWarehouse.contact.email.includes(".com"))) {
+      alert("Please enter a valid email with @ and .com")
+    }
+    else {
+      axios.post("http://localhost:8080/warehouses/", newWarehouse);
+    }
   }
 
   return (
