@@ -4,37 +4,37 @@ import arrow from "../../assets/Icons/arrow_back-24px.svg";
 import axios from "axios";
 
 const EditWarehouse = () => {
-  const editWarehouse = (obj) => {
-    axios.put("http://localhost:8080/warehouses/", obj);
-  };
+//   const editWarehouse = (obj) => {
+//     axios.put("http://localhost:8080/warehouses/", obj);
+//   };
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log(e.target);
+//   function handleSubmit(e) {
+//     e.preventDefault();
+//     console.log(e.target);
 
-    const newWarehouse = {
-      name: e.target.warehouse.value,
-      address: e.target.address.value,
-      city: e.target.city.value,
-      country: e.target.country.value,
-      contact: {
-        name: e.target.contactName.value,
-        position: e.target.position.value,
-        phone: e.target.phone.value,
-        email: e.target.email.value,
-      },
-    };
-    editWarehouse(newWarehouse);
-  }
+//     const newWarehouse = {
+//       name: e.target.warehouse.value,
+//       address: e.target.address.value,
+//       city: e.target.city.value,
+//       country: e.target.country.value,
+//       contact: {
+//         name: e.target.contactName.value,
+//         position: e.target.position.value,
+//         phone: e.target.phone.value,
+//         email: e.target.email.value,
+//       },
+//     };
+//     editWarehouse(newWarehouse);
+//   }
 
   return (
     <article className="nw__container">
       <article className="nw__top">
         <img src={arrow} alt="arrow icon" />
-        <h1 className="nw__page-title">Add New Warehouse</h1>
+        <h1 className="nw__page-title">Edit Warehouse</h1>
       </article>
       <article className="nw__form-container">
-        <form className="nw__form" onSubmit={handleSubmit}>
+        <form className="nw__form">
           {/* begin warehouse details*/}
           <article className="nw__flex-container">
             <article className="nw__warehouse">
