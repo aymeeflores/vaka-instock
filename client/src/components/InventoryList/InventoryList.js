@@ -32,7 +32,7 @@ const InventoryList = ({ inventoryItems }) => {
               </article>
               <Link className="inventory__btn-link" to="">
                 <article className="inventory__btn">
-                  <p className="inventory__btn-text">+ Add New Item</p>
+                  <Link to='/inventory/add'><p className="inventory__btn-text">+ Add New Item</p></Link>
                 </article>
               </Link>
             </article>
