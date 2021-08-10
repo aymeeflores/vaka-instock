@@ -155,6 +155,7 @@
   &__leftcontain {
     width: 40%;
 
+    margin-bottom: 8px;
     margin-left: 24px;
     @include tablet {
       display: flex;
@@ -208,6 +209,7 @@
     padding: 4px 8px;
     width: 61px;
     &--outofstock {
+      width: 86%;
       color: #c94515 !important;
       background: rgba(201, 69, 21, 0.07) !important;
     }
@@ -221,6 +223,7 @@
     margin-top: 19px;
     display: flex;
     margin-left: 24px;
+
     @include tablet {
       flex-basis: 0;
       margin-top: 0;
